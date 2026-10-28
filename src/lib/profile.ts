@@ -20,55 +20,86 @@ export const profile = {
   ],
   "skills": [
     {
-      "group": "Languages",
+      "group": "AI & LLM",
+      "items": [
+        "Anthropic Claude API",
+        "OpenAI API",
+        "Google Vertex AI (Gemini)",
+        "AWS Bedrock",
+        "AI agents and tool calling",
+        "MCP",
+        "Vercel AI SDK",
+        "LangChain",
+        "Exa AI",
+        "Parallel AI",
+        "Olostep",
+        "Riveter",
+        "LLM evaluation"
+      ]
+    },
+    {
+      "group": "RAG & Retrieval",
+      "items": [
+        "Pinecone",
+        "Hybrid search with Reciprocal Rank Fusion",
+        "LLM-based metadata filtering",
+        "ThirdAI NeuralDB"
+      ]
+    },
+    {
+      "group": "Backend & Data",
       "items": [
         "Python",
-        "JavaScript",
-        "TypeScript"
+        "FastAPI",
+        "Django",
+        "SQLAlchemy",
+        "Neon (PostgreSQL)",
+        "MongoDB",
+        "PropelAuth",
+        "REST APIs"
+      ]
+    },
+    {
+      "group": "Data Providers & APIs",
+      "items": [
+        "Crustdata",
+        "HubSpot CRM",
+        "Google Maps / Places / Geocoding",
+        "SEC EDGAR",
+        "GLEIF",
+        "EPA"
+      ]
+    },
+    {
+      "group": "Infra & Tools",
+      "items": [
+        "AWS Lambda",
+        "Trigger.dev",
+        "Render",
+        "Azure",
+        "Doppler",
+        "GitHub Actions",
+        "Grafana",
+        "Pytest",
+        "Vitest"
       ]
     },
     {
       "group": "Frontend",
       "items": [
         "React",
+        "TypeScript",
         "Next.js",
-        "Tailwind CSS"
+        "Tailwind CSS",
+        "TanStack Query",
+        "Plate.js"
       ]
     },
     {
-      "group": "Backend",
+      "group": "AI-Assisted Engineering",
       "items": [
-        "Node.js",
-        "Express",
-        "FastAPI",
-        "Django"
-      ]
-    },
-    {
-      "group": "Databases",
-      "items": [
-        "PostgreSQL",
-        "MongoDB",
-        "Pinecone"
-      ]
-    },
-    {
-      "group": "AI & Cloud",
-      "items": [
-        "OpenAI",
-        "Claude",
-        "Gemini",
-        "LangChain",
-        "AWS",
-        "Azure"
-      ]
-    },
-    {
-      "group": "Tools",
-      "items": [
-        "GitHub",
-        "Postman",
-        "Grafana"
+        "Claude Code",
+        "Codex"
       ]
     }
   ],
@@ -88,27 +119,119 @@ export const experience = [
   {
     "company": "Corvus",
     "role": "Product Engineer",
-    "period": "Dec 2025 - Present",
+    "period": "Nov 2025 - Present",
     "location": "New York, United States - Remote",
     "kind": "Full-time",
-    "description": "Build AI research agents, enrichment and classification pipelines, evaluation tooling, and full-stack features for sales intelligence. Work directly with the CEO and CTO.",
+    "description": "Product engineer at a 5-person AI startup building sales intelligence for the chemical industry. I work directly with the CEO and CTO on research agents, data pipelines, evaluation tooling, and the product itself.",
     "current": true,
-    "contributions": [],
+    "contributions": [
+      "Architected the product's multi-step agentic research pipeline: tool-using LLM agents (Vertex AI Gemini, OpenAI, Claude, Exa AI) on Trigger.dev take a company name and produce a cited report on its products, facilities and operations. Stages run in parallel and pick up where they left off after a failure.",
+      "Engineered enrichment and classification pipelines over a ~200K-company dataset with Crustdata, Exa AI, Olostep, Riveter, OpenAI and Gemini, covering batch and real-time processing, entity matching and deduplication.",
+      "Built LLM evaluation harnesses (ground-truth datasets, precision/recall scoring) so model and prompt changes are benchmarked before they reach production. Brought LLM cost down with prompt caching, right-sizing models per stage, and cost telemetry.",
+      "Extended the agent harness behind the product's Claude-based AI agent (Vercel AI SDK, tool calling), working on how it manages context and persists state, and built MCP tools that give research agents access to EPA facility data.",
+      "Shipped full-stack features (FastAPI, Neon PostgreSQL, React/TypeScript, Render): PropelAuth multi-tenant auth, Google Maps/Places geospatial prospecting, a Plate.js live editor, PDF/CSV/email document pipelines, Parallel AI news monitoring and admin tooling.",
+      "Brought production error alerts to zero by setting up Slack and Grafana monitoring across services and pipelines, then fixing what it surfaced through backfills, data repairs and job recovery.",
+      "Automated engineering and data operations with Claude Code and Codex: custom agent skills, operational runbooks, and parallel sub-agent workflows that audited thousands of production records."
+    ],
     "technologies": [],
+    "stackGroups": [
+      {
+        "label": "Agents and models",
+        "items": [
+          "Vertex AI Gemini",
+          "OpenAI",
+          "Claude",
+          "Exa AI",
+          "Vercel AI SDK",
+          "MCP",
+          "Trigger.dev"
+        ]
+      },
+      {
+        "label": "Data and enrichment",
+        "items": [
+          "Crustdata",
+          "Olostep",
+          "Riveter",
+          "Parallel AI",
+          "Google Maps / Places",
+          "Neon PostgreSQL"
+        ]
+      },
+      {
+        "label": "Product",
+        "items": [
+          "Python",
+          "FastAPI",
+          "React",
+          "TypeScript",
+          "PropelAuth",
+          "Plate.js",
+          "Render"
+        ]
+      },
+      {
+        "label": "Operations",
+        "items": [
+          "Grafana",
+          "Slack",
+          "Claude Code",
+          "Codex"
+        ]
+      }
+    ],
     "phases": []
   },
   {
     "company": "The Yellow Network",
     "role": "Software Developer",
-    "period": "Aug 2023 - Dec 2025",
+    "period": "Aug 2023 - Nov 2025",
     "location": "Coimbatore, India",
-    "kind": "Part-time → Full-time",
-    "description": "Co-built Tia and Nifo, spanning RAG, model endpoints, backend services, data pipelines, and frontend product development.",
+    "kind": "Full-time",
+    "description": "Early-stage startup building Nifo, an AI co-innovation workflow platform. I worked directly with the founder and co-built Tia and Nifo, spanning RAG, model endpoints, backend services, data pipelines, and frontend product development.",
     "current": false,
-    "contributions": [],
+    "contributions": [
+      "Co-built Tia from scratch with one other engineer: the RAG assistant live on tvsscs.com for TVS Supply Chain Solutions (NSE-listed). It answers visitor support questions and captures sales-qualified leads into HubSpot CRM for the sales team.",
+      "Designed Tia's serverless architecture on AWS Lambda, Pinecone and AWS Bedrock with tuned cold starts. Hybrid retrieval merges semantic and targeted service queries via Reciprocal Rank Fusion; a fast model extracts Pinecone metadata filters and a stronger model writes the answer, keeping cost and latency down.",
+      "Built a 150-query retrieval evaluation suite for Tia tracking success rate, response latency, link relevance and category coverage, and used the failing queries to guide each round of retrieval fixes.",
+      "Co-built Nifo end to end as one of two core developers: a Django and PostgreSQL backend and a Next.js/TypeScript frontend, with secure authentication and per-user access control.",
+      "Developed RAG-based AI agents for document generation, enterprise insights, and solution and provider search, using LangChain, OpenAI and open-source LLMs, with ThirdAI NeuralDB for semantic indexing and retrieval.",
+      "Deployed and scaled LLM endpoints on Azure AI Foundry and Azure VMs, and built Selenium scraping and preprocessing pipelines that produced structured, LLM-ready datasets."
+    ],
     "technologies": [],
+    "stackGroups": [
+      {
+        "label": "Models and retrieval",
+        "items": [
+          "OpenAI",
+          "LangChain",
+          "AWS Bedrock",
+          "Pinecone",
+          "ThirdAI NeuralDB",
+          "Hybrid retrieval",
+          "Reciprocal Rank Fusion"
+        ]
+      },
+      {
+        "label": "Product",
+        "items": [
+          "Django",
+          "PostgreSQL",
+          "Next.js",
+          "TypeScript"
+        ]
+      },
+      {
+        "label": "Cloud and integrations",
+        "items": [
+          "AWS Lambda",
+          "Azure",
+          "HubSpot CRM"
+        ]
+      }
+    ],
     "phases": [
-      "Apr 2024 - Dec 2025 · Full-time, on-site",
+      "Apr 2024 - Nov 2025 · Full-time, on-site",
       "Aug 2023 - Mar 2024 · Part-time, hybrid"
     ]
   },
@@ -117,11 +240,11 @@ export const experience = [
     "role": "Software Developer Intern",
     "period": "Jun 2023 - Aug 2023",
     "location": "Illinois, United States - Remote",
-    "kind": "Internship",
-    "description": "Built Next.js landing pages, integrated CRM and conversion tracking, and automated contact-data validation workflows.",
+    "kind": "Part-time internship",
+    "description": "Sole developer building the company's web experiences with Next.js, integrating CRM and conversion tracking, and automating contact-data validation workflows.",
     "current": false,
     "contributions": [
-      "Developed a frontend landing page using Next.js and JAMstack.",
+      "Sole developer: built and shipped the company's web experiences with Next.js, Tailwind CSS, and the JAMstack, including a frontend landing page.",
       "Built landing-page functionality in GoHighLevel and integrated the Facebook Conversions API.",
       "Used Pipedream to automate validation and data-management workflows, integrating Twilio, EmailOversight, and Melissa APIs."
     ],
@@ -136,30 +259,83 @@ export const experience = [
       "EmailOversight",
       "Melissa"
     ],
+    "stackGroups": [
+      {
+        "label": "Product",
+        "items": [
+          "Next.js",
+          "Tailwind CSS"
+        ]
+      },
+      {
+        "label": "CRM and automation",
+        "items": [
+          "GoHighLevel",
+          "LeadsHook",
+          "Pipedream"
+        ]
+      },
+      {
+        "label": "Integrations",
+        "items": [
+          "Facebook Conversions API",
+          "Twilio",
+          "EmailOversight",
+          "Melissa"
+        ]
+      }
+    ],
     "phases": []
   },
   {
     "company": "Travelfika",
-    "role": "Full-stack Developer",
+    "role": "Full-Stack Developer Intern",
     "period": "Feb 2023 - May 2023",
     "location": "United States - Remote",
-    "kind": "Part-time",
-    "description": "Contributed to airport-transfer and cruise modules, focusing on backend APIs, travel-provider integrations, and frontend implementation.",
+    "kind": "Part-time internship",
+    "description": "Built flight, car, and cruise booking screens and contributed to airport-transfer and cruise modules, with backend APIs, travel-provider integrations, and the authentication flow.",
     "current": false,
     "contributions": [
-      "Contributed to airport-transfer and cruise modules for a travel platform.",
-      "Worked on backend API setup and provider selection, integrating Hotelbeds for airport transfers and Sabre for cruise functionality.",
-      "Implemented frontend designs alongside backend development."
+      "Built flight, car, and cruise booking screens for a travel-booking platform, and contributed to its airport-transfer and cruise modules.",
+      "Set up backend APIs and chose providers, integrating Hotelbeds for airport transfers and Sabre for cruise functionality.",
+      "Owned the authentication flow and implemented frontend designs alongside backend development."
     ],
     "technologies": [
       "React",
       "TypeScript",
       "Tailwind CSS",
       "Node.js",
+      "Express",
       "MongoDB",
       "Bitbucket",
       "Hotelbeds API",
       "Sabre API"
+    ],
+    "stackGroups": [
+      {
+        "label": "Frontend",
+        "items": [
+          "React",
+          "TypeScript",
+          "Tailwind CSS"
+        ]
+      },
+      {
+        "label": "Backend",
+        "items": [
+          "Node.js",
+          "Express",
+          "MongoDB"
+        ]
+      },
+      {
+        "label": "Integrations and tooling",
+        "items": [
+          "Hotelbeds API",
+          "Sabre API",
+          "Bitbucket"
+        ]
+      }
     ],
     "phases": []
   }
@@ -167,14 +343,16 @@ export const experience = [
 
 export const caseStudyContent: Record<string, { description: string; problem: string; contributions: string[]; stack: string[]; link?: string; linkLabel?: string }> = {
   "corvus": {
-    "description": "Architected a multi-step research pipeline that turns a company name into a cited report on its products, facilities, and operations.",
-    "problem": "Chemical-industry sales research requires information about companies, their products, and their facilities to be collected and brought together into useful account intelligence.",
+    "description": "Architected the multi-step agentic research pipeline behind Corvus, a sales-intelligence platform for the chemical industry, plus the data pipelines, evaluation tooling and product features around it.",
+    "problem": "Corvus is a 5-person AI startup building sales intelligence for the chemical industry, and I work directly with the CEO and CTO. Chemical sales research needs information about companies, their products and their facilities to be collected from many sources and brought together into useful account intelligence.",
     "contributions": [
-      "Architected tool-using research agents with parallel, resumable stages on Trigger.dev.",
-      "Engineered enrichment and classification pipelines across a dataset of approximately 200,000 companies, including entity matching and deduplication.",
-      "Built evaluation harnesses using ground-truth datasets and precision/recall scoring.",
-      "Extended context management and state persistence in the agent harness and built MCP tools for EPA facility data.",
-      "Shipped full-stack features using FastAPI, Neon PostgreSQL, and React/TypeScript."
+      "Architected the product's multi-step agentic research pipeline: tool-using LLM agents (Vertex AI Gemini, OpenAI, Claude, Exa AI) on Trigger.dev take a company name and produce a cited report on its products, facilities and operations. Stages run in parallel and pick up where they left off after a failure.",
+      "Engineered enrichment and classification pipelines over a ~200K-company dataset with Crustdata, Exa AI, Olostep, Riveter, OpenAI and Gemini, covering batch and real-time processing, entity matching and deduplication.",
+      "Built LLM evaluation harnesses (ground-truth datasets, precision/recall scoring) so model and prompt changes are benchmarked before they reach production. Brought LLM cost down with prompt caching, right-sizing models per stage, and cost telemetry.",
+      "Extended the agent harness behind the product's Claude-based AI agent (Vercel AI SDK, tool calling), working on how it manages context and persists state, and built MCP tools that give research agents access to EPA facility data.",
+      "Shipped full-stack features (FastAPI, Neon PostgreSQL, React/TypeScript, Render): PropelAuth multi-tenant auth, Google Maps/Places geospatial prospecting, a Plate.js live editor, PDF/CSV/email document pipelines, Parallel AI news monitoring and admin tooling.",
+      "Brought production error alerts to zero by setting up Slack and Grafana monitoring across services and pipelines, then fixing what it surfaced through backfills, data repairs and job recovery.",
+      "Automated engineering and data operations with Claude Code and Codex: custom agent skills, operational runbooks, and parallel sub-agent workflows that audited thousands of production records."
     ],
     "stack": [
       "Python",
@@ -188,7 +366,19 @@ export const caseStudyContent: Record<string, { description: string; problem: st
       "Claude",
       "Exa AI",
       "Vercel AI SDK",
-      "MCP"
+      "MCP",
+      "Crustdata",
+      "Olostep",
+      "Riveter",
+      "Parallel AI",
+      "PropelAuth",
+      "Google Maps / Places",
+      "Plate.js",
+      "Render",
+      "Grafana",
+      "Slack",
+      "Claude Code",
+      "Codex"
     ]
   },
   "tia": {

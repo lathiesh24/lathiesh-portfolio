@@ -24,6 +24,7 @@ const projectDesigns: Project[] = [
       { title: 'Recover at the stage level', text: 'Tool-using agents run in parallel on Trigger.dev. Stages can pick up where they left off after a failure instead of repeating the entire research process.' },
       { title: 'Match the model to the task', text: 'The pipeline uses Vertex AI Gemini, OpenAI, Claude, and Exa AI. Prompt caching, right-sized models, and cost telemetry help reduce LLM spend.' },
       { title: 'Build the data layer too', text: 'Batch and real-time enrichment cover a dataset of approximately 200,000 companies, including entity matching and deduplication. MCP tools provide research agents with EPA facility data.' },
+      { title: 'Operate it, not just build it', text: 'Slack and Grafana monitoring across services and pipelines brought production error alerts to zero, with the issues it surfaced fixed through backfills, data repairs and job recovery.' },
     ],
     evaluation: 'Ground-truth datasets and precision/recall scoring benchmark model and prompt changes before production. Monitoring, data repairs, backfills, and job recovery support daily operations.',
   },
@@ -79,4 +80,6 @@ const projectDesigns: Project[] = [
   },
 ];
 
-export const projects: Project[] = projectDesigns.map(project => ({ ...project, ...caseStudyContent[project.id] }));
+export const workOrder = ['corvus', 'tia', 'nifo', 'saramsa'];
+
+export const projects: Project[] =projectDesigns.map(project => ({ ...project, ...caseStudyContent[project.id] }));

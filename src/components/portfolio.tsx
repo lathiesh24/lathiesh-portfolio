@@ -1,32 +1,166 @@
 'use client';
-import dynamic from 'next/dynamic';
-import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
-import { ArrowUpRight, ArrowDown, ArrowRight, Plus, X, Menu, Pause, Play } from 'lucide-react';
-import { profile, experience, caseStudyContent } from '@/lib/profile';
-import { projects, type Project } from '@/lib/projects';
-const Assembly = dynamic(() => import('./assembly-scene'), { ssr: false });
-const work = ['tia', 'nifo', 'saramsa'].map(id => projects.find(p => p.id === id)!);
-const companyLogos: Record<string,string> = { Corvus: 'corvus.png', 'The Yellow Network': 'yellow.png', Travelfika: 'travelfika.png' };
-const nav = ['About', 'Projects', 'Experience', 'Skills', 'Contact'];
-const icons: Record<string, string> = { Python:'python', JavaScript:'js', TypeScript:'ts', React:'react', 'Next.js':'nextjs', 'Tailwind CSS':'tailwind', 'Node.js':'nodejs', Express:'express', FastAPI:'fastapi', Django:'django', PostgreSQL:'postgres', MongoDB:'mongodb', Pinecone:'pinecone', OpenAI:'openai', Claude:'claude', Gemini:'gemini', LangChain:'langchain', AWS:'aws', Azure:'azure', GitHub:'github', Postman:'postman', Grafana:'grafana' };
-function ProjectDiagram({ project }: { project: Project }) {
- const [step, setStep] = useState(0);
- return <div className={`project-diagram diagram-${project.id}`}><div className="diagram-label"><span>HOW IT WORKS</span><span>0{step+1} / 04</span></div><div className="diagram-stage" aria-live="polite"><span className="diagram-index">0{step+1}</span><div className={`workflow-art workflow-${project.id}`} aria-hidden="true">{project.id==='tia'?<><span className="query-pill">Visitor question</span><div className="retrieval-pair"><b>Semantic search</b><b>Service search</b></div><span className="fusion-pill">Rank fusion ? Answer</span></>:project.id==='nifo'?<><div className="document-stack"><i/><i/><i/></div><span className="search-pill">Search ? Generate ? Discover</span></>:<><div className="feedback-sources">{['Slack','Email','Jira','Azure','Asana','Linear'].map(n=><span key={n}>{n}</span>)}</div><div className="theme-lines"><i/><i/><i/></div><span className="roadmap-pill">Feedback ? Themes ? Roadmap</span></>}</div><strong>{project.steps[step]}</strong></div><div className="step-buttons">{project.steps.map((s,i)=><button key={s} aria-pressed={step===i} onClick={()=>setStep(i)}><span>0{i+1}</span>{s}</button>)}</div><span className="diagram-footnote">Interactive architecture illustration</span></div>;
+import { useState } from 'react';
+import { ArrowUpRight, ArrowRight, Menu, X } from 'lucide-react';
+import { profile, experience } from '@/lib/profile';
+import { projects } from '@/lib/projects';
+import { ProjectVisual } from './project-visual';
+import './portfolio.css';
+
+const { email, github, linkedin } = profile.contact;
+const nav = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
+
+const companyLogos: Record<string, string> = { Corvus: 'corvus.png', 'The Yellow Network': 'yellow.png', Travelfika: 'travelfika.png' };
+const skillIcons: Record<string, string> = { Python: 'python', JavaScript: 'js', TypeScript: 'ts', React: 'react', 'Next.js': 'nextjs', 'Tailwind CSS': 'tailwind', 'Node.js': 'nodejs', Express: 'express', FastAPI: 'fastapi', Django: 'django', 'Neon (PostgreSQL)': 'postgres', MongoDB: 'mongodb', Pinecone: 'pinecone', 'OpenAI API': 'openai', 'Anthropic Claude API': 'claude', 'Google Vertex AI (Gemini)': 'gemini', LangChain: 'langchain', 'AWS Bedrock': 'aws', 'AWS Lambda': 'aws', Azure: 'azure', 'GitHub Actions': 'github', Grafana: 'grafana' };
+
+const process = [
+  { n: '01', title: 'Understand the data', text: 'Start from the real data and the real question, before choosing a model.' },
+  { n: '02', title: 'Build and evaluate', text: 'Agents and retrieval with ground-truth evaluation, so changes are measured.' },
+  { n: '03', title: 'Ship and monitor', text: 'Production product work, with monitoring and fixes once people use it.' },
+];
+
+function ToolDeck({ groups, company }: { groups: { label: string; items: string[] }[]; company: string }) {
+  return (
+    <div className="pf-tools" role="group" aria-label={`Tools used at ${company}`}>
+      <span className="pf-tools-title">Tools</span>
+      <div className="pf-tools-deck">
+        {groups.map((g, i) => (
+          <div className="pf-tool-card" key={g.label} style={{ '--i': i } as React.CSSProperties}>
+            <h4>{g.label}</h4>
+            <ul>{g.items.map(t => <li key={t}>{t}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
-function CaseStudy({ project, close }: { project: Project; close: () => void }) {
- const dialog=useRef<HTMLDialogElement>(null);
- useEffect(()=>{const el=dialog.current;el?.showModal();const old=document.body.style.overflow;document.body.style.overflow='hidden';return()=>{el?.close();document.body.style.overflow=old;};},[]);
- return <dialog ref={dialog} className="case-dialog" onCancel={close} aria-labelledby="case-title"><div className="case-bar"><span>PROJECT / {project.name.toUpperCase()}</span><button onClick={close} aria-label="Close project"><X/></button></div><div className="case-body"><p className="eyebrow">{project.company}</p><h2 id="case-title">{project.name}</h2><p className="case-lede">{project.description}</p><section><h3>The problem</h3><p>{project.problem}</p></section><section><h3>My contribution</h3><ul>{project.contributions?.map(item=><li key={item}>{item}</li>)}</ul></section><section><h3>Engineering decisions</h3>{project.decisions.map(item=><div className="decision" key={item.title}><h4>{item.title}</h4><p>{item.text}</p></div>)}</section><section><h3>Technology</h3><div className="tags">{project.stack?.map(s=><span key={s}>{s}</span>)}</div></section>{project.link&&<a className="button ink" href={project.link} target="_blank" rel="noreferrer">{project.linkLabel}<ArrowUpRight size={17}/></a>}</div></dialog>;
-}
-export default function Portfolio(){
- const reduced=useReducedMotion();const [menu,setMenu]=useState(false);const [expanded,setExpanded]=useState(true);const [moving,setMoving]=useState(true);const [selected,setSelected]=useState<Project|null>(null);const [skillGroup,setSkillGroup]=useState('All');
- return <><a className="skip-link" href="#about">Skip to content</a><header className="site-header"><a href="#home" className="wordmark" aria-label="Lathiesh home">lm<span>↗</span></a><nav aria-label="Main navigation" className={menu?'nav-open':''}>{nav.map(n=><a key={n} href={`#${n.toLowerCase()}`} onClick={()=>setMenu(false)}>{n}</a>)}</nav><a className="resume-link" href="/resume/">Résumé <ArrowUpRight size={15}/></a><button className="menu-button" aria-label="Toggle navigation" aria-expanded={menu} onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button></header><main>
- <section id="home" className="hero"><div className="hero-topline"><span>AI & FULL-STACK ENGINEER</span><span>COIMBATORE, INDIA</span></div><h1><span>LATHIESH</span><span className="surname">MAHENDRAN<span className="name-dot">↗</span></span></h1><div className="hero-main"><div className="hero-intro"><span className="status"><i/> Currently building at Corvus</span><h2>From a complex problem<br/>to a product that works<span>.</span></h2><p>I build AI agents, retrieval systems, and the full-stack products around them.</p><a href="#projects" className="button light">Explore my projects <ArrowDown size={17}/></a></div><div className="assembly-wrap"><div className="scene-cross cross-a">+</div><div className="scene-cross cross-b">+</div><Assembly expanded={expanded} moving={moving&&!reduced}/><div className="scene-controls"><button onClick={()=>setExpanded(!expanded)} aria-pressed={expanded}>{expanded?'Assemble':'Explore layers'}<Plus size={14}/></button><button aria-label={moving?'Pause animation':'Play animation'} onClick={()=>setMoving(!moving)}>{moving?<Pause size={14}/>:<Play size={14}/>}</button></div><span className="scene-caption">DATA → INTELLIGENCE → EXPERIENCE</span></div></div><div className="hero-bottom"><span>Python / TypeScript / AI systems</span><a href="#about">Scroll to discover <ArrowDown size={13}/></a></div></section>
- <section id="about" className="about-section section-shell"><div className="section-label"><span>01 / ABOUT</span><span>A LITTLE CONTEXT</span></div><div className="about-grid"><h2>Curious by nature.<br/><span>Hands-on by choice.</span></h2><div><p className="about-lead">Hi, I’m Lathiesh. I’m an AI and full-stack engineer who enjoys taking a problem all the way from an idea to production.</p><p>{profile.about[1]}</p><a href="/resume/" className="text-link">More about my background <ArrowUpRight size={17}/></a></div></div></section>
- <section id="projects" className="projects-section section-shell"><div className="section-label"><span>02 / PROJECTS</span><span>IDEAS, BUILT & SHIPPED</span></div><div className="section-heading"><h2>Projects<span className="count">(03)</span></h2><p>The products I’ve built,<br/>and the thinking behind them.</p></div><div className="project-gallery">{work.map((p,i)=><motion.article key={p.id} className={`project-entry project-${p.id}`} initial={{y:reduced?0:35}} whileInView={{y:0}} viewport={{once:true}} transition={{duration:.6}}><ProjectDiagram project={p}/><div className="project-caption"><div><span className="project-type">{i===2?'FEEDBACK & PRODUCT PLANNING':i===0?'RAG & CUSTOMER SUPPORT':'AI WORKFLOWS & SEARCH'}</span><h3>{p.name}<span>0{i+1}</span></h3></div><button className="round-link" aria-label={`Read ${p.name} project`} onClick={()=>setSelected(p)}><ArrowUpRight/></button></div><p>{p.description}</p><div className="project-bottom"><span>{p.id==='saramsa'?'AI-powered product':'Built at The Yellow Network'}</span><button onClick={()=>setSelected(p)}>Read project <ArrowRight size={15}/></button></div></motion.article>)}</div></section>
- <section id="experience" className="experience-section"><div className="section-shell"><div className="section-label"><span>03 / EXPERIENCE</span><span>2023 — PRESENT</span></div><div className="section-heading"><h2>Where I’ve<br/><span>made things happen.</span></h2><p>Small teams. Real products.<br/>Ownership across the stack.</p></div><div className="experience-list">{experience.map((role,i)=><article key={role.company} className="experience-row"><div className="experience-date"><span>0{i+1}</span><p>{role.period}</p>{role.current&&<b>NOW</b>}</div><div className="experience-main"><div className="company-heading">{companyLogos[role.company] && <span className="company-logo"><img src={`/companies/${companyLogos[role.company]}`} alt="" width="56" height="56" loading="lazy"/></span>}<h3>{role.company}</h3></div><p className="role-title">{role.role} <span>· {role.kind}</span></p><p>{role.description}</p><details><summary>What I worked on <Plus size={15}/></summary><ul>{(role.current?caseStudyContent.corvus.contributions:role.contributions.length?role.contributions:['Co-built Tia and Nifo across AI, backend, and frontend product development.',...role.phases]).map(s=><li key={s}>{s}</li>)}</ul></details></div><span className="experience-location">{role.location}</span></article>)}</div></div></section>
- <section id="skills" className="skills-section section-shell"><div className="section-label"><span>04 / SKILLS</span><span>MY WORKING TOOLKIT</span></div><div className="section-heading"><h2>Skills<span className="heading-subtitle">The tools behind the work.</span></h2><p>From the data layer<br/>to the final interaction.</p></div><div className="skill-filters" role="group" aria-label="Filter skills">{['All',...profile.skills.map(g=>g.group)].map(g=><button key={g} aria-pressed={skillGroup===g} onClick={()=>setSkillGroup(g)}>{g}</button>)}</div><div className="skills-groups">{profile.skills.filter(g=>skillGroup==='All'||g.group===skillGroup).map(group=><div className="skill-group" key={group.group}><h3>{group.group}</h3><div className="skill-grid">{group.items.map(item=><div className="skill-tile" key={item}><img src={`/skills/${icons[item]}.svg`} alt="" width="42" height="42" loading="lazy"/><span>{item}</span></div>)}</div></div>)}</div></section>
- <section id="contact" className="contact-section section-shell"><div className="section-label"><span>05 / CONTACT</span><span>LET’S BUILD SOMETHING USEFUL</span></div><a className="contact-title" href={`mailto:${profile.contact.email}`}>Have something<br/>in mind?<ArrowUpRight/></a><div className="contact-bottom"><a href={`mailto:${profile.contact.email}`}>{profile.contact.email}</a><div><a href={profile.contact.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={profile.contact.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="/resume/">Résumé ↗</a></div></div></section>
- </main><footer><span>© {new Date().getFullYear()} Lathiesh Mahendran</span><span>Built with curiosity.</span><a href="#home">Back to top ↑</a></footer>{selected&&<CaseStudy project={selected} close={()=>setSelected(null)}/>}</>;
+
+const kinds: Record<string, string> = {
+  corvus: 'Agentic research platform',
+  tia: 'Production RAG',
+  nifo: 'AI workflows and search',
+  saramsa: 'AI product',
+};
+const work = ['corvus', 'tia', 'nifo', 'saramsa'].map(id => projects.find(p => p.id === id)!);
+
+export default function Portfolio() {
+  const [menu, setMenu] = useState(false);
+  const [skillGroup, setSkillGroup] = useState('All');
+  const visibleSkills = profile.skills.filter(g => skillGroup === 'All' || g.group === skillGroup);
+
+  return (
+    <div className="pf">
+      <a className="skip-link" href="#about">Skip to content</a>
+      <div className="pf-stage">
+        <header className="pf-header">
+          <a href="#home" className="pf-wordmark" aria-label="Lathiesh home">lm<span>↗</span></a>
+          <nav aria-label="Main navigation" className={menu ? 'open' : ''}>
+            {nav.map(n => <a key={n} href={`#${n.toLowerCase()}`} onClick={() => setMenu(false)}>{n}</a>)}
+          </nav>
+          <a className="pf-email" href={`mailto:${email}`}>Get in touch <ArrowUpRight size={15} /></a>
+          <button className="pf-menu" aria-label="Toggle navigation" aria-expanded={menu} onClick={() => setMenu(!menu)}>{menu ? <X /> : <Menu />}</button>
+        </header>
+
+        <section className="pf-hero" id="home">
+          <span className="pf-pill"><i /> Currently building at Corvus</span>
+          <h1>
+            <span>Lathiesh Mahendran</span>
+            <em>AI &amp; Full-Stack Engineer</em>
+          </h1>
+          <p className="pf-sub">I build AI agents, retrieval systems, and the full-stack products around them, from the data layer to the product people use.</p>
+          <div className="pf-actions">
+            <a className="pf-primary" href={`mailto:${email}`}>Email me <ArrowUpRight size={17} /></a>
+            <a className="pf-secondary" href="#projects">See my work <ArrowRight size={16} /></a>
+            <a className="pf-secondary" href="/Lathiesh_Mahendran_Resume.pdf" target="_blank" rel="noreferrer">Résumé</a>
+          </div>
+        </section>
+      </div>
+
+      <main>
+        <section className="pf-logos" aria-label="Where I have worked">
+          <span>Where I’ve built</span>
+          <ul>{Object.entries(companyLogos).map(([name, file]) => <li key={name}><img src={`/companies/${file}`} alt="" width="28" height="28" /> {name}</li>)}</ul>
+        </section>
+
+        <section className="pf-section" id="about">
+          <p className="pf-kicker">About</p>
+          <h2>Curious by nature. <em>Hands-on by choice.</em></h2>
+          <div className="pf-about">
+            <p className="pf-lead">{profile.about[0]}</p>
+            <div><p>{profile.about[1]}</p><p>{profile.about[2]}</p></div>
+          </div>
+          <ol className="pf-steps">{process.map(p => <li key={p.n}><span>{p.n}</span><h3>{p.title}</h3><p>{p.text}</p></li>)}</ol>
+        </section>
+
+        <section className="pf-section" id="experience">
+          <p className="pf-kicker">Experience</p>
+          <h2>Where I’ve <em>made things happen.</em></h2>
+          <div className="pf-exp">
+            {experience.map((role, i) => (
+              <article className="pf-exp-row" key={role.company}>
+                <div className="pf-exp-date"><span>0{i + 1}</span><p>{role.period}</p>{role.current && <b>NOW</b>}</div>
+                <div className="pf-exp-main">
+                  <div className="pf-exp-head">
+                    {companyLogos[role.company] && <img src={`/companies/${companyLogos[role.company]}`} alt="" width="40" height="40" loading="lazy" />}
+                    <h3>{role.company}</h3>
+                  </div>
+                  <p className="pf-role">{role.role} <span>· {role.kind}</span></p>
+                  <p>{role.description}</p>
+                  <ul className="pf-bullets">{role.contributions.map(s => <li key={s}>{s}</li>)}</ul>
+                </div>
+                <div className="pf-exp-side">
+                  <span className="pf-exp-loc">{role.location}</span>
+                  <ToolDeck groups={role.stackGroups} company={role.company} />
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="pf-section" id="projects">
+          <p className="pf-kicker">Selected work</p>
+          <h2>Things I’ve <em>built and shipped.</em></h2>
+          <div className="pf-projects">
+            {work.map((p, i) => (
+              <article className="pf-proj" key={p.id}>
+                <a className="pf-proj-visual" href={`/projects/${p.id}/`} aria-label={`${p.name} project page`}><ProjectVisual project={p} /></a>
+                <div className="pf-proj-text">
+                  <span className="pf-proj-index">0{i + 1}</span>
+                  <span className="pf-proj-kind">{kinds[p.id]}</span>
+                  <h3>{p.name}</h3>
+                  <p className="pf-proj-title">{p.title.split('\n').map((l, n) => <span key={n}>{n > 0 && <br />}{l}</span>)}</p>
+                  <p className="pf-proj-desc">{p.description}</p>
+                  <div className="pf-tags">{p.tags.map(t => <span key={t}>{t}</span>)}</div>
+                  <a className="pf-know" href={`/projects/${p.id}/`}>Know more <ArrowRight size={16} /></a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="pf-section" id="skills">
+          <p className="pf-kicker">Skills</p>
+          <h2>The tools <em>behind the work.</em></h2>
+          <div className="pf-filters" role="group" aria-label="Filter skills">
+            {['All', ...profile.skills.map(g => g.group)].map(g => <button key={g} aria-pressed={skillGroup === g} onClick={() => setSkillGroup(g)}>{g}</button>)}
+          </div>
+          <div className="pf-skills">
+            {visibleSkills.map(group => (
+              <div key={group.group}>
+                <h3>{group.group}</h3>
+                <ul>{group.items.map(item => <li key={item}>{skillIcons[item] && <img src={`/skills/${skillIcons[item]}.svg`} alt="" width="20" height="20" loading="lazy" />}{item}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="pf-contact" id="contact">
+          <h2>Have something <em>in mind?</em></h2>
+          <a className="pf-primary" href={`mailto:${email}`}>{email} <ArrowUpRight size={17} /></a>
+          <div className="pf-links"><a href={github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="/Lathiesh_Mahendran_Resume.pdf" target="_blank" rel="noreferrer">Résumé ↗</a></div>
+        </section>
+      </main>
+
+      <footer className="pf-footer"><span>© {new Date().getFullYear()} Lathiesh Mahendran</span><a href="#home">Back to top ↑</a></footer>
+    </div>
+  );
 }

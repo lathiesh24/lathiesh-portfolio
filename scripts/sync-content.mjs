@@ -12,6 +12,7 @@ const experience = draft.experience.map(role => ({
   current: role.company === 'Corvus',
   contributions: role.contributions ?? [],
   technologies: role.confirmedTechnologies ?? [],
+  stackGroups: role.stackGroups ?? [],
   phases: (role.phases ?? []).map(phase => `${phase.period} · ${phase.employment}`),
 }));
 const caseStudyContent = Object.fromEntries(draft.projects.map((project, i) => [

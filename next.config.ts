@@ -3,6 +3,5 @@ const config: NextConfig = {
   output: 'export',
   trailingSlash: true,
   images: { unoptimized: true },
-  transpilePackages: ['three'],
 };
 export default config;

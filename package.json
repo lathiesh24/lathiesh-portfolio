@@ -9,24 +9,20 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource-variable/manrope": "latest",
+    "@fontsource/ibm-plex-mono": "latest",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "lucide-react": "latest",
     "next": "16.4.3",
     "react": "19.3.1",
-    "react-dom": "19.3.1",
-    "three": "0.186.1",
-    "@react-three/fiber": "9.8.2",
-    "@react-three/drei": "10.7.9",
-    "motion": "14.7.1",
-    "lucide-react": "latest",
-    "@fontsource-variable/manrope": "latest",
-    "@fontsource/ibm-plex-mono": "latest"
+    "react-dom": "19.3.1"
   },
   "devDependencies": {
-    "typescript": "latest",
+    "@tailwindcss/postcss": "4.3.3",
     "@types/node": "^22.0.0",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "@types/three": "latest",
     "tailwindcss": "4.3.3",
-    "@tailwindcss/postcss": "4.3.3"
+    "typescript": "latest"
   }
 }
