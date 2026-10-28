@@ -1,0 +1,4 @@
+Skill Icons: https://github.com/tandpfun/skill-icons (MIT)
+Lobe Icons: https://github.com/lobehub/lobe-icons (MIT)
+Pinecone: https://github.com/callback-io/allogo (brand identification)
+Logos belong to their respective owners.

@@ -23,34 +23,8 @@ export const profile = {
       "group": "Languages",
       "items": [
         "Python",
-        "TypeScript",
-        "JavaScript"
-      ]
-    },
-    {
-      "group": "AI and retrieval",
-      "items": [
-        "Claude",
-        "OpenAI",
-        "Gemini",
-        "AWS Bedrock",
-        "LangChain",
-        "Vercel AI SDK",
-        "MCP",
-        "Pinecone",
-        "Hybrid search",
-        "LLM evaluation"
-      ]
-    },
-    {
-      "group": "Backend and data",
-      "items": [
-        "FastAPI",
-        "Django",
-        "PostgreSQL / Neon",
-        "MongoDB",
-        "SQLAlchemy",
-        "REST APIs"
+        "JavaScript",
+        "TypeScript"
       ]
     },
     {
@@ -58,21 +32,43 @@ export const profile = {
       "items": [
         "React",
         "Next.js",
-        "Tailwind CSS",
-        "TanStack Query"
+        "Tailwind CSS"
       ]
     },
     {
-      "group": "Infrastructure and quality",
+      "group": "Backend",
       "items": [
-        "AWS Lambda",
-        "Trigger.dev",
-        "Azure",
-        "Render",
-        "GitHub Actions",
-        "Grafana",
-        "Pytest",
-        "Vitest"
+        "Node.js",
+        "Express",
+        "FastAPI",
+        "Django"
+      ]
+    },
+    {
+      "group": "Databases",
+      "items": [
+        "PostgreSQL",
+        "MongoDB",
+        "Pinecone"
+      ]
+    },
+    {
+      "group": "AI & Cloud",
+      "items": [
+        "OpenAI",
+        "Claude",
+        "Gemini",
+        "LangChain",
+        "AWS",
+        "Azure"
+      ]
+    },
+    {
+      "group": "Tools",
+      "items": [
+        "GitHub",
+        "Postman",
+        "Grafana"
       ]
     }
   ],
