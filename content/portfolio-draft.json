@@ -1,0 +1,412 @@
+{
+  "status": "Website content source; public fields are synchronized before each production build",
+  "sectionOrder": [
+    "Introduction",
+    "Selected work",
+    "Experience",
+    "About",
+    "Skills",
+    "Writing",
+    "Education",
+    "Contact"
+  ],
+  "introduction": {
+    "name": "Lathiesh Mahendran",
+    "title": "AI & Full-Stack Engineer",
+    "headline": "I build AI-powered products, from the data pipeline to the user interface.",
+    "description": "I'm a product engineer at Corvus, with 3+ years of experience building at early-stage startups. My work spans AI agents, retrieval systems, backend services, and full-stack applications.",
+    "location": "Coimbatore, India",
+    "actions": [
+      "View projects",
+      "View resume",
+      "Get in touch"
+    ]
+  },
+  "about": [
+    "I'm Lathiesh, an AI and full-stack engineer based in Coimbatore. I've worked closely with founders and small engineering teams, taking products from initial requirements through architecture, implementation, and production support.",
+    "At Corvus, I build research agents, company enrichment pipelines, evaluation tooling, and product features for sales intelligence. Previously, at The Yellow Network, I co-built Tia, a RAG assistant for TVS Supply Chain Solutions, and Nifo, an AI co-innovation platform.",
+    "I enjoy owning a problem end to end: understanding the data, choosing the right approach, building the experience, and improving it once it's in use."
+  ],
+  "projects": [
+    {
+      "name": "Corvus",
+      "subtitle": "AI research and company intelligence",
+      "context": "Professional work at Corvus",
+      "summary": "Architected a multi-step research pipeline that turns a company name into a cited report on its products, facilities, and operations.",
+      "problem": "Chemical-industry sales research requires information about companies, their products, and their facilities to be collected and brought together into useful account intelligence.",
+      "myContribution": [
+        "Architected tool-using research agents with parallel, resumable stages on Trigger.dev.",
+        "Engineered enrichment and classification pipelines across a dataset of approximately 200,000 companies, including entity matching and deduplication.",
+        "Built evaluation harnesses using ground-truth datasets and precision/recall scoring.",
+        "Extended context management and state persistence in the agent harness and built MCP tools for EPA facility data.",
+        "Shipped full-stack features using FastAPI, Neon PostgreSQL, and React/TypeScript."
+      ],
+      "architecture": [
+        "Company input",
+        "Parallel tool-using research stages",
+        "Synthesis",
+        "Cited report"
+      ],
+      "engineeringDecisions": [
+        "Resume failed stages to avoid restarting the entire workflow.",
+        "Use prompt caching and models sized for individual stages to manage LLM cost.",
+        "Benchmark model and prompt changes before they reach production."
+      ],
+      "evidence": [
+        {
+          "value": "~200,000",
+          "meaning": "Companies in the enrichment/classification dataset, not customers or research reports"
+        },
+        {
+          "value": "Precision and recall",
+          "meaning": "Evaluation measures used; no numeric scores supplied"
+        }
+      ],
+      "stack": [
+        "Python",
+        "FastAPI",
+        "React",
+        "TypeScript",
+        "Neon PostgreSQL",
+        "Trigger.dev",
+        "Vertex AI Gemini",
+        "OpenAI",
+        "Claude",
+        "Exa AI",
+        "Vercel AI SDK",
+        "MCP"
+      ],
+      "links": []
+    },
+    {
+      "name": "Tia",
+      "subtitle": "RAG assistant for TVS Supply Chain Solutions",
+      "context": "Co-built with one other engineer at The Yellow Network",
+      "summary": "Co-built a visitor-support assistant that answers questions and captures sales-qualified leads in HubSpot CRM.",
+      "problem": "Website visitors need relevant answers about the company's services, while sales enquiries need to reach the sales team.",
+      "myContribution": [
+        "Co-built the assistant from scratch with one other engineer.",
+        "Designed the AWS Lambda, Pinecone, and AWS Bedrock architecture and tuned cold starts.",
+        "Combined semantic and targeted service queries using Reciprocal Rank Fusion.",
+        "Built a 150-query retrieval evaluation suite and used failing queries to guide improvements."
+      ],
+      "architecture": [
+        "Visitor question",
+        "Metadata filters and hybrid retrieval",
+        "Reciprocal Rank Fusion",
+        "Answer generation and lead capture"
+      ],
+      "engineeringDecisions": [
+        "Combine complementary retrieval approaches rather than relying on one search path.",
+        "Use a fast model for metadata filters and a stronger model for answers.",
+        "Evaluate success rate, response latency, link relevance, and category coverage."
+      ],
+      "evidence": [
+        {
+          "value": "150 queries",
+          "meaning": "Size of the evaluation suite, not usage or an accuracy score"
+        },
+        {
+          "value": "2 engineers",
+          "meaning": "Team size for the initial assistant build"
+        }
+      ],
+      "stack": [
+        "AWS Lambda",
+        "AWS Bedrock",
+        "Pinecone",
+        "HubSpot CRM",
+        "Hybrid retrieval",
+        "Reciprocal Rank Fusion"
+      ],
+      "links": [
+        {
+          "label": "TVS SCS website",
+          "url": "https://www.tvsscs.com",
+          "kind": "Customer website; not independently verified as an accessible demo in this review"
+        }
+      ]
+    },
+    {
+      "name": "Saramsa.ai",
+      "subtitle": "Customer feedback to product roadmap",
+      "context": "Product project; collaboration details pending",
+      "summary": "Built and launched an LLM-powered platform that brings customer feedback together, groups it into themes, and turns it into prioritized roadmap tasks.",
+      "problem": "Customer feedback arrives across multiple communication and project-management tools. Product planning needs a way to turn that scattered input into shared themes and actionable tasks.",
+      "myContribution": [
+        "Built the product across feedback integrations, LLM processing, backend services, and the frontend experience.",
+        "Connected feedback from Slack, email, Jira, Azure DevOps, Asana, and Linear.",
+        "Implemented a workflow from feedback collection to themes and prioritized roadmap tasks."
+      ],
+      "architecture": [
+        "Feedback integrations",
+        "LLM processing",
+        "Feedback themes",
+        "Prioritized roadmap tasks"
+      ],
+      "evidence": [
+        {
+          "value": "6 source types",
+          "meaning": "Integration sources named in the resume; not users or customers"
+        }
+      ],
+      "stack": [
+        "OpenAI",
+        "Next.js",
+        "FastAPI",
+        "Neon PostgreSQL",
+        "Azure"
+      ],
+      "links": [
+        {
+          "label": "Saramsa.ai",
+          "url": "https://saramsa.ai",
+          "kind": "Product URL supplied in the resume; current accessibility needs confirmation"
+        }
+      ]
+    },
+    {
+      "name": "Nifo",
+      "subtitle": "AI co-innovation platform",
+      "context": "Professional work at The Yellow Network",
+      "summary": "Co-built an AI workflow platform for document generation, enterprise insights, and solution and provider search.",
+      "problem": "The platform brings enterprise search and document-generation workflows into a shared product with authenticated, per-user access.",
+      "myContribution": [
+        "Co-built the platform end to end as one of two core developers.",
+        "Built across the Django/PostgreSQL backend and Next.js/TypeScript frontend, including authentication and per-user access control.",
+        "Developed RAG agents using LangChain, OpenAI, open-source LLMs, and ThirdAI NeuralDB.",
+        "Deployed LLM endpoints on Azure AI Foundry and Azure VMs and built scraping and preprocessing pipelines for structured datasets."
+      ],
+      "architecture": [
+        "Data preparation",
+        "Semantic indexing",
+        "RAG agents",
+        "Authenticated product workflows"
+      ],
+      "evidence": [
+        {
+          "value": "2 core developers",
+          "meaning": "Team size, preserving shared ownership of the build"
+        }
+      ],
+      "stack": [
+        "Next.js",
+        "TypeScript",
+        "Django",
+        "PostgreSQL",
+        "LangChain",
+        "OpenAI",
+        "ThirdAI NeuralDB",
+        "Azure"
+      ],
+      "links": [
+        {
+          "label": "Visit Nifo",
+          "url": "https://nifo.theyellow.network/",
+          "kind": "User-supplied product URL; HTTP response confirmed, product UI not inspected"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Corvus",
+      "role": "Product Engineer",
+      "period": "Dec 2025 - Present",
+      "employment": "Full-time",
+      "location": "New York, United States - Remote",
+      "summary": "Build AI research agents, enrichment and classification pipelines, evaluation tooling, and full-stack features for sales intelligence. Work directly with the CEO and CTO."
+    },
+    {
+      "company": "The Yellow Network",
+      "role": "Software Developer",
+      "period": "Aug 2023 - Dec 2025",
+      "location": "Coimbatore, India",
+      "phases": [
+        {
+          "period": "Apr 2024 - Dec 2025",
+          "employment": "Full-time, on-site"
+        },
+        {
+          "period": "Aug 2023 - Mar 2024",
+          "employment": "Part-time, hybrid"
+        }
+      ],
+      "summary": "Co-built Tia and Nifo, spanning RAG, model endpoints, backend services, data pipelines, and frontend product development."
+    },
+    {
+      "company": "Klisme",
+      "role": "Software Developer",
+      "period": "Jun 2023 - Aug 2023",
+      "location": "Illinois, United States - Remote",
+      "confirmedTechnologies": [
+        "Next.js",
+        "Tailwind CSS",
+        "GoHighLevel",
+        "LeadsHook",
+        "Pipedream",
+        "Facebook Conversions API",
+        "Twilio",
+        "EmailOversight",
+        "Melissa"
+      ],
+      "summary": "Built Next.js landing pages, integrated CRM and conversion tracking, and automated contact-data validation workflows.",
+      "employment": "Internship",
+      "contributions": [
+        "Developed a frontend landing page using Next.js and JAMstack.",
+        "Built landing-page functionality in GoHighLevel and integrated the Facebook Conversions API.",
+        "Used Pipedream to automate validation and data-management workflows, integrating Twilio, EmailOversight, and Melissa APIs."
+      ]
+    },
+    {
+      "company": "Travelfika",
+      "role": "Full-stack Developer",
+      "period": "Feb 2023 - May 2023",
+      "employment": "Part-time",
+      "location": "United States - Remote",
+      "confirmedTechnologies": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "MongoDB",
+        "Bitbucket",
+        "Hotelbeds API",
+        "Sabre API"
+      ],
+      "summary": "Contributed to airport-transfer and cruise modules, focusing on backend APIs, travel-provider integrations, and frontend implementation.",
+      "contributions": [
+        "Contributed to airport-transfer and cruise modules for a travel platform.",
+        "Worked on backend API setup and provider selection, integrating Hotelbeds for airport transfers and Sabre for cruise functionality.",
+        "Implemented frontend designs alongside backend development."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "group": "Languages",
+      "items": [
+        "Python",
+        "TypeScript",
+        "JavaScript"
+      ]
+    },
+    {
+      "group": "AI and retrieval",
+      "items": [
+        "Claude",
+        "OpenAI",
+        "Gemini",
+        "AWS Bedrock",
+        "LangChain",
+        "Vercel AI SDK",
+        "MCP",
+        "Pinecone",
+        "Hybrid search",
+        "LLM evaluation"
+      ]
+    },
+    {
+      "group": "Backend and data",
+      "items": [
+        "FastAPI",
+        "Django",
+        "PostgreSQL / Neon",
+        "MongoDB",
+        "SQLAlchemy",
+        "REST APIs"
+      ]
+    },
+    {
+      "group": "Frontend",
+      "items": [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "TanStack Query"
+      ]
+    },
+    {
+      "group": "Infrastructure and quality",
+      "items": [
+        "AWS Lambda",
+        "Trigger.dev",
+        "Azure",
+        "Render",
+        "GitHub Actions",
+        "Grafana",
+        "Pytest",
+        "Vitest"
+      ]
+    }
+  ],
+  "writing": [
+    {
+      "title": "Fast Swaps, Predictable Costs: Cosmos DB with TTL",
+      "date": "September 2025",
+      "summary": "An engineering write-up on batch visibility, retention, and the trade-offs behind a data pipeline.",
+      "url": "https://www.linkedin.com/pulse/fast-swaps-predictable-costs-cosmos-db-ttl-lathiesh-mahendran-z0koc"
+    }
+  ],
+  "education": {
+    "institution": "Government College of Technology, Coimbatore",
+    "period": "2020 - 2024"
+  },
+  "contact": {
+    "heading": "Let's talk about what you're building.",
+    "email": "lathieshmahendran24@gmail.com",
+    "github": "https://github.com/lathiesh24",
+    "linkedin": "https://www.linkedin.com/in/lathiesh-mahendran/"
+  },
+  "editorial": {
+    "sourcePrecedence": "User corrections override resume dates. The newer AI-engineer resume supports recent project claims. The historical resume supports Klisme, Travelfika, Coin Watch, and Quizify; its current-role wording and internship-search statement are outdated.",
+    "resumeSource": "E:\\D drive\\Downloads\\Lathiesh_Mahendran_Resume_AI_Engineer.pdf",
+    "resumeAction": "Update employment dates before adding the resume download. Do not silently modify the original PDF.",
+    "pending": [
+      "Saramsa: solo/team ownership, current status, and any demonstrable user outcomes.",
+      "Project visuals: genuine product screenshots or walkthroughs where available; conceptual diagrams should remain clearly labeled.",
+      "Measured results: add baseline, final value, measurement method, and timeframe only when supplied.",
+      "Optional personal detail: one genuine interest or engineering story to make the About section more individual."
+    ],
+    "excludedUntilSupported": [
+      "Invented impact percentages",
+      "Unverified customer or user counts",
+      "Independent or solo ownership claims",
+      "Internship labels without confirmation",
+      "Unverified awards or testimonials"
+    ],
+    "githubReview": "The profile is accessible but its README contains default placeholders. The tvs_scs_bot repository is empty; do not present it as source evidence for Tia. Keep the general profile link and select additional repositories only after substantive review.",
+    "linkChecks": {
+      "nifo": "HTTP 200; no readable server-rendered product description",
+      "saramsa": "DNS lookup failed from this environment; retain supplied URL without a live-demo claim"
+    },
+    "historicalResumeSource": "E:\\D drive\\Downloads\\Lathiesh_Resume - A4.pdf",
+    "roleClassification": "Klisme is explicitly described as an internship in the historical resume. Travelfika appears under internship experience there, but retains the more recent user-supplied Part-time classification.",
+    "collegeProjects": "User clarified that Coin Watch and Quizify are small college projects. Exclude them from featured work and the proposed earlier-projects section."
+  },
+  "earlierProjects": [
+    {
+      "name": "Coin Watch",
+      "summary": "A frontend cryptocurrency tracker displaying real-time prices and market data.",
+      "stack": [
+        "React",
+        "Redux Toolkit",
+        "RapidAPI",
+        "Ant Design"
+      ],
+      "placement": "Exclude from the portfolio showcase; retain only as historical background.",
+      "classification": "Small college project"
+    },
+    {
+      "name": "Quizify",
+      "summary": "An interactive frontend quiz application for testing knowledge across different topics.",
+      "stack": [
+        "React",
+        "Material UI",
+        "Trivia API"
+      ],
+      "placement": "Exclude from the portfolio showcase; retain only as historical background.",
+      "classification": "Small college project"
+    }
+  ]
+}

@@ -1,12 +1,16 @@
+import { caseStudyContent } from './profile';
+export { experience } from './profile';
+
 export type Project = {
   id: string; number: string; name: string; label: string; title: string;
   description: string; company: string; color: string; tags: string[];
   metrics: { value: string; label: string }[];
   steps: string[]; role: string; decisions: { title: string; text: string }[];
   evaluation: string; link?: string; linkLabel?: string;
+  problem?: string; contributions?: string[]; stack?: string[];
 };
 
-export const projects: Project[] = [
+const projectDesigns: Project[] = [
   {
     id: 'corvus', number: '01', name: 'Corvus', label: 'AGENTIC RESEARCH',
     title: 'A company name in.\nCited intelligence out.',
@@ -41,7 +45,7 @@ export const projects: Project[] = [
     link: 'https://www.tvsscs.com', linkLabel: 'Visit TVS SCS',
   },
   {
-    id: 'saramsa', number: '03', name: 'Saramsa', label: 'INDEPENDENT PRODUCT',
+    id: 'saramsa', number: '03', name: 'Saramsa', label: 'AI PRODUCT DEVELOPMENT',
     title: 'Customer feedback.\nProduct direction.',
     description: 'An AI platform that brings scattered feedback together, groups it into themes, and turns it into prioritized roadmap tasks.',
     company: 'Built and launched · Saramsa.ai', color: '#c2a2ff',
@@ -75,9 +79,4 @@ export const projects: Project[] = [
   },
 ];
 
-export const experience = [
-  { company: 'Corvus', role: 'Product Engineer', period: 'DEC 2025 — PRESENT', location: 'New York · Remote', kind: 'Full-time', description: 'Agentic research, company enrichment, evaluation, and full-stack sales intelligence. Working directly with the CEO and CTO.', current: true },
-  { company: 'The Yellow Network', role: 'Software Developer', period: 'AUG 2023 — DEC 2025', location: 'Coimbatore, India', kind: 'Part-time → Full-time', description: 'Co-built Tia and Nifo. Retrieval systems, LLM endpoints, backend services, and product interfaces.', phases: ['Apr 2024 – Dec 2025 · Full-time, on-site', 'Aug 2023 – Mar 2024 · Part-time, hybrid'] },
-  { company: 'Klisme', role: 'Software Developer', period: 'JUN 2023 — AUG 2023', location: 'Illinois · Remote', kind: 'Early experience', description: 'Next.js · GoHighLevel' },
-  { company: 'Travelfika', role: 'Full-stack Developer', period: 'FEB 2023 — MAY 2023', location: 'United States · Remote', kind: 'Part-time', description: 'JavaScript · Tailwind CSS' },
-];
+export const projects: Project[] = projectDesigns.map(project => ({ ...project, ...caseStudyContent[project.id] }));

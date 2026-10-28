@@ -22,11 +22,15 @@ The Next.js production build creates a static export in `out/`. It can be served
 
 ## Where to edit
 
-- `src/lib/projects.ts`: case studies and employment timeline.
+- `content/portfolio-draft.json`: content source, with editorial notes kept out of the public site. College projects are excluded.
+- `scripts/sync-content.mjs`: generates the public content module before each build.
+- `src/lib/profile.ts`: generated introduction, about, skills, case-study contributions, and employment timeline.
+- `src/lib/projects.ts`: project presentation and engineering decisions.
 - `src/components/portfolio.tsx`: page structure and project dialogs.
 - `src/components/system-scene.tsx`: interactive Three.js scene.
 - `src/app/globals.css`: design, Tailwind import, and responsive layouts.
 - `src/app/layout.tsx`: metadata and local fonts.
+- `src/app/resume/page.tsx`: printable resume using the corrected website content; the original PDF is unchanged.
 
 The 3D scene is lazy-loaded. Rendering pauses when offscreen or manually paused; reduced-motion preferences disable continuous animation. A CSS fallback handles unsupported WebGL and rendering errors. The project buttons provide equivalent keyboard-accessible project selection.
 
