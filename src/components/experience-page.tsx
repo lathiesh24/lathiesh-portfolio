@@ -1,7 +1,8 @@
-import { ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, CalendarDays, Briefcase, MapPin } from 'lucide-react';
 import { profile, experience } from '@/lib/profile';
 import { slugOf } from '@/lib/slug';
-import { CompanyMark, ToolCode, isWordmark } from './company-bits';
+import { CompanyMark, isWordmark } from './company-bits';
+import StackGlass from './stack-glass';
 import './portfolio.css';
 
 export default function ExperiencePage({ index }: { index: number }) {
@@ -16,24 +17,37 @@ export default function ExperiencePage({ index }: { index: number }) {
           <a className="pp-back" href="/#experience" style={{ marginLeft: 'auto' }}>← All experience</a>
           <a className="pf-email" href={`mailto:${email}`}>Get in touch <ArrowUpRight size={15} /></a>
         </header>
-        <section className="pp-hero">
+        <section className="pp-hero ep-hero">
           <div>
             <span className="pp-kind">Experience · 0{index + 1}</span>
             <h1>
               <span className="ep-company">{!isWordmark(role.company) && <CompanyMark name={role.company} size={56} />}{role.company}</span>
               <em>{role.role}</em>
             </h1>
-            <p className="pp-company">{role.period} · {role.kind} · {role.location}</p>
             <p className="pp-lede">{role.description}</p>
-            {role.links.length > 0 && (
-              <p className="pf-worked">Worked on {role.links.map(l => <a key={l.url} href={l.url} target="_blank" rel="noreferrer" aria-label={l.label}>{l.logo ? <img src={`/companies/${l.logo}`} alt={l.label} height="26" /> : l.label} <ArrowUpRight size={13} /></a>)}</p>
-            )}
+            <ul className="ep-chips" aria-label="Role facts">
+              <li><CalendarDays size={15} aria-hidden="true" /><span>{role.period}</span></li>
+              <li><Briefcase size={15} aria-hidden="true" /><span>{role.kind}</span></li>
+              <li><MapPin size={15} aria-hidden="true" /><span>{role.location}</span></li>
+              {role.links.map(l => (
+                <li key={l.url} className="ep-chip-link">
+                  <a href={l.url} target="_blank" rel="noreferrer" aria-label={`Worked on ${l.label}`}>
+                    <span>Worked on</span>{l.logo ? <img src={`/companies/${l.logo}`} alt="" height="18" /> : l.label}<ArrowUpRight size={13} aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ToolCode groups={role.stackGroups} company={role.company} />
         </section>
       </div>
 
       <main>
+        <section className="pp-section">
+          <p className="pf-kicker">The stack</p>
+          <h2>Tools I <em>used.</em></h2>
+          <div className="pp-stack-glass"><StackGlass groups={role.stackGroups} company={role.company} contributions={role.contributions} notes={role.toolNotes} /></div>
+        </section>
+
         <section className="pp-section">
           <p className="pf-kicker">What I did</p>
           <h2>My work <em>there.</em></h2>

@@ -254,7 +254,33 @@
         "Shipped full-stack features (FastAPI, Neon PostgreSQL, React/TypeScript, Render): PropelAuth multi-tenant auth, Google Maps/Places geospatial prospecting, a Plate.js live editor, PDF/CSV/email document pipelines, Parallel AI news monitoring and admin tooling.",
         "Brought production error alerts to zero by setting up Slack and Grafana monitoring across services and pipelines, then fixing what it surfaced through backfills, data repairs and job recovery.",
         "Automated engineering and data operations with Claude Code and Codex: custom agent skills, operational runbooks, and parallel sub-agent workflows that audited thousands of production records."
-      ]
+      ],
+      "toolNotes": {
+        "Vertex AI Gemini": "Corvus uses Gemini for high-volume classification, sorting companies into industry segments through Vertex AI batch jobs, where batch pricing makes reruns over the whole dataset affordable. I built and ran those batch classification campaigns, tuned the prompts and recovered failed batches.",
+        "OpenAI": "Corvus uses OpenAI models for research and judgment stages such as entity discovery, location research and relevance scoring. I compared models stage by stage against ground-truth sets and picked the one that scored best for each.",
+        "Claude": "Corvus's in-app AI agent runs on Claude, chosen for reliable tool calling over long, multi-step conversations. I extended the agent harness around it, working on how it manages context and persists state.",
+        "Exa AI": "Corvus uses Exa as its web search and retrieval layer: research agents find a company's own pages and third-party sources, so every claim in a report links back to a source. I built the classification and location research flows on Exa and moved industry classification onto it.",
+        "Vercel AI SDK": "Corvus builds its agents on the Vercel AI SDK, which gives one interface for streaming and tool calling across Anthropic and OpenAI. That means a stage can switch model providers without a rewrite. I built agent features on it, including tool calling and streaming responses.",
+        "MCP": "Corvus uses MCP to give agents access to data. I built MCP tools that give research agents access to EPA facility data, and connected our coding agents to the Neon database, Linear and LogRocket through MCP servers, including a LogRocket session-digest routine.",
+        "Trigger.dev": "Corvus runs its long-running research and enrichment jobs on Trigger.dev. A pipeline can take minutes per company and fan out across thousands, so it needs durable tasks with retries, concurrency limits and runs that resume after a failure. I built and operated pipelines there and recovered stuck runs.",
+        "Crustdata": "Corvus uses Crustdata for company firmographics such as headcount, industry and LinkedIn data. It seeds a company record before research runs. I built the matching and deduplication of companies by domain and Crustdata ID.",
+        "Olostep": "Corvus first used Olostep to classify companies into industry segments from their websites. I wrote the classification prompt and tested it on Olostep, ran it at scale, and later moved the flow to an Exa-based classifier.",
+        "Riveter": "Corvus uses Riveter for facility discovery: finding the US states where a company actually manufactures. I built the Riveter manufacturing-states function, wrote and tuned the facility-research prompt, and ran it in batches across the manufacturer dataset.",
+        "Parallel AI": "Corvus uses Parallel AI for news monitoring on target accounts: a monitor runs per company and posts new results back through a webhook, so reps see recent news without us running a crawler. I built the news monitoring, including cancelling monitors when a company is no longer targeted.",
+        "Google Maps / Places": "Corvus uses Google Maps and Places for geospatial prospecting and geocoding: reps search an area on a map, Places returns the facilities there, and we match them back to companies in our dataset. I built the Geo Prospector admin tools.",
+        "Neon PostgreSQL": "Corvus's application database runs on Neon. Its branching gives every git branch its own copy of staging data, so migrations and backfills are tested on real data before they touch production. I designed schema changes and migrations on it and ran the queries and data repairs.",
+        "Python": "Corvus's backend is written in Python, along with its data scripts and backfills. I used it for API work, production backfills and the analysis behind evaluations and cost reports.",
+        "FastAPI": "Corvus's backend API runs on FastAPI, with typed Pydantic schemas that keep it in step with the TypeScript frontend. I built endpoints for enrichment, research triggers, webhooks and admin tools.",
+        "React": "Corvus's frontend is built in React: account pages, research reports, map prospecting and admin screens. I built features across it, including the account strategy editor and admin panels.",
+        "TypeScript": "Corvus uses TypeScript across the frontend and the compute service that runs research pipelines, so data shapes are checked end to end. Most of my pipeline and agent work was in TypeScript.",
+        "PropelAuth": "Corvus uses PropelAuth for login and multi-tenant organizations: each customer is its own tenant with its own users and roles. I built tenant provisioning and fixed token refresh across silent re-authentication.",
+        "Plate.js": "Corvus uses Plate.js as the rich-text editor for account strategy documents: AI drafts a strategy and reps edit it in place. I built the WYSIWYG editor for the Account Strategy page.",
+        "Render": "Corvus hosts its backend and frontend on Render, with a preview deploy for each pull request. I also used Render one-off jobs to run approved production data repairs and backfills.",
+        "Grafana": "Corvus uses Grafana for error and log monitoring across services. I set up dashboards for error volume, errors by API route and traces, and used them to find production failures and trace them to a root cause.",
+        "Slack": "Corvus sends pipeline failures and data mismatches to Slack as alerts. I added failure notifications for research steps and fixed each alert at its root cause with a code change, a backfill or a job recovery.",
+        "Claude Code": "Corvus's engineering runs on Claude Code. I wrote custom skills and runbooks and ran parallel sub-agents to audit thousands of production records, checking every finding against real data before acting on it.",
+        "Codex": "Corvus uses Codex as a second coding agent alongside Claude Code. I set it up to share the repo's instructions, skills and sub-agent definitions, and used it to run tasks in parallel and review changes."
+      }
     },
     {
       "company": "The Yellow Network",

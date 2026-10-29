@@ -5,13 +5,13 @@ import { profile, experience } from '@/lib/profile';
 import { projects } from '@/lib/projects';
 import { ProjectVisual } from './project-visual';
 import { CompanyMark, isWordmark } from './company-bits';
+import { brandIcon } from '@/lib/brand-icons';
 import { slugOf } from '@/lib/slug';
 import './portfolio.css';
 
 const { email, github, linkedin } = profile.contact;
 const nav = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
-const skillIcons: Record<string, string> = { Python: 'python', JavaScript: 'js', TypeScript: 'ts', React: 'react', 'Next.js': 'nextjs', 'Tailwind CSS': 'tailwind', 'Node.js': 'nodejs', Express: 'express', FastAPI: 'fastapi', Django: 'django', 'Neon (PostgreSQL)': 'postgres', MongoDB: 'mongodb', Pinecone: 'pinecone', 'OpenAI API': 'openai', 'Anthropic Claude API': 'claude', 'Google Vertex AI (Gemini)': 'gemini', LangChain: 'langchain', 'AWS Bedrock': 'aws', 'AWS Lambda': 'aws', Azure: 'azure', 'GitHub Actions': 'github', Grafana: 'grafana' };
 
 const process = [
   { n: '01', title: 'Understand the data', text: 'Start from the real data and the real question, before choosing a model.' },
@@ -130,7 +130,7 @@ export default function Portfolio() {
             {visibleSkills.map(group => (
               <div key={group.group}>
                 <h3>{group.group}</h3>
-                <ul>{group.items.map(item => <li key={item}>{skillIcons[item] && <img src={`/skills/${skillIcons[item]}.svg`} alt="" width="20" height="20" loading="lazy" />}{item}</li>)}</ul>
+                <ul>{group.items.map(item => <li key={item}>{brandIcon(item) && <img src={brandIcon(item)} alt="" width="20" height="20" loading="lazy" />}{item}</li>)}</ul>
               </div>
             ))}
           </div>

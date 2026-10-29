@@ -1,0 +1,10 @@
+Brand marks used in the Skills section and the Experience stack icons.
+
+*.svg  Glyphs from the simple-icons project (https://simpleicons.org, CC0-1.0 licensed icon artwork),
+       downloaded from https://cdn.jsdelivr.net/npm/simple-icons/icons/ in Oct 2026 at the owner's request.
+       A fill colour (the brand colour) was added to each file. The marks remain trademarks of their owners.
+
+*.png  Favicons of the brands' official sites (exa.ai, trigger.dev, crustdata.com, olostep.com, parallel.ai,
+       propelauth.com, platejs.org, thirdai.com, gohighlevel.com, leadshook.com, pipedream.com,
+       emailoversight.com, melissa.com, hotelbeds.com, sabre.com, pinecone.io, riveterhq.com),
+       retrieved through the Google favicon service at 128px in Oct 2026 at the owner's request.

@@ -13,6 +13,7 @@ const experience = draft.experience.map(role => ({
   contributions: role.contributions ?? [],
   technologies: role.confirmedTechnologies ?? [],
   stackGroups: role.stackGroups ?? [],
+  toolNotes: role.toolNotes ?? {},
   links: role.links ?? [],
   phases: (role.phases ?? []).map(phase => `${phase.period} · ${phase.employment}`),
 }));
