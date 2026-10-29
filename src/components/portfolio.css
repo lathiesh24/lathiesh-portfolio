@@ -328,3 +328,16 @@ html{scroll-behavior:smooth}
 .sg-item:hover .sg-name{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:#a3f03a;text-decoration-thickness:2px}
 .sg-item:hover .sg-plus{background:var(--accent)}
 @media(prefers-reduced-motion:reduce){.sg-hint svg,.sg-plus:after{animation:none}}
+.pp-flow li p{margin:10px 0 0;max-width:15.5em;font-size:14px;line-height:1.65;color:var(--muted)}
+.pp-flow li b{font-size:17px}
+.pf-exp-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:6px}
+.pf-exp-actions .pf-more{margin-top:0}
+.pf-site{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:underline;text-decoration-color:#a3f03a;text-decoration-thickness:3px;text-underline-offset:4px}
+.pf-site:hover{color:var(--accent)}
+.ep-chip-link a .ep-site{font:inherit;letter-spacing:0;text-transform:none;color:inherit}
+.pf-contact-actions{display:grid;gap:22px;justify-items:start}
+.pf-contact-email{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(26px,4vw,48px);line-height:1.1;letter-spacing:-.01em;word-break:break-all;user-select:all}
+.pf-contact-buttons{display:flex;flex-wrap:wrap;gap:12px}
+.pf-contact-buttons .pf-primary{border:0;cursor:pointer;font-family:inherit}
+.pf-contact-buttons .pf-primary svg,.pf-contact-buttons .pf-secondary svg{flex:none}
+.pf-contact-buttons .pf-primary{gap:10px}

@@ -8,6 +8,7 @@ export type Project = {
   steps: string[]; role: string; decisions: { title: string; text: string }[];
   evaluation: string; link?: string; linkLabel?: string;
   problem?: string; contributions?: string[]; stack?: string[];
+  plain?: string; stepNotes?: string[];
 };
 
 const projectDesigns: Project[] = [
@@ -19,6 +20,13 @@ const projectDesigns: Project[] = [
     tags: ['Agents', 'Tool calling', 'Data pipelines'],
     metrics: [{ value: '~200K', label: 'companies in enrichment pipelines' }, { value: 'Parallel', label: 'resumable research stages' }],
     steps: ['Company input', 'Parallel research', 'Synthesis', 'Cited report'],
+    plain: 'Corvus helps salespeople in the chemical industry research companies. You give it a company name, and it gathers what is known about the company’s products, facilities and operations into one report, with the sources cited.',
+    stepNotes: [
+      'You give it a company name.',
+      'AI agents research the company in parallel, and can pick up where they left off if something fails.',
+      'The findings are brought together into one clear picture.',
+      'A report on the company’s products, facilities and operations, with each claim linked to its source.',
+    ],
     role: 'Architected the multi-step research pipeline, engineered enrichment and classification, built evaluation harnesses, and shipped supporting full-stack product features.',
     decisions: [
       { title: 'Recover at the stage level', text: 'Tool-using agents run in parallel on Trigger.dev. Stages can pick up where they left off after a failure instead of repeating the entire research process.' },
@@ -36,6 +44,13 @@ const projectDesigns: Project[] = [
     tags: ['Hybrid search', 'Pinecone', 'AWS Bedrock'],
     metrics: [{ value: '150', label: 'queries in the evaluation suite' }, { value: '2', label: 'engineers building from scratch' }],
     steps: ['Visitor question', 'Hybrid retrieval', 'Rank fusion', 'Answer + CRM'],
+    plain: 'Tia is a chat assistant on the TVS Supply Chain Solutions website. It answers visitors’ questions about the company’s services and passes sales enquiries on to the sales team.',
+    stepNotes: [
+      'A visitor asks a question on the website.',
+      'The assistant searches the company’s content in two ways at once: by meaning, and by specific service.',
+      'The two sets of results are merged into one ranked list, so the best answers come first.',
+      'A model writes the answer, and sales enquiries are sent to the sales team in HubSpot.',
+    ],
     role: 'Co-built Tia from scratch with one other engineer. Designed the serverless architecture, hybrid retrieval, and retrieval evaluation suite.',
     decisions: [
       { title: 'Combine retrieval strategies', text: 'Semantic search and targeted service queries are merged through Reciprocal Rank Fusion, bringing together complementary retrieval results.' },
@@ -53,6 +68,13 @@ const projectDesigns: Project[] = [
     tags: ['OpenAI', 'Next.js', 'FastAPI'],
     metrics: [{ value: '6', label: 'feedback sources integrated' }, { value: 'End to end', label: 'product ownership' }],
     steps: ['Feedback sources', 'LLM processing', 'Shared themes', 'Roadmap tasks'],
+    plain: 'Saramsa collects customer feedback from the tools teams already use, groups it into themes, and turns those themes into prioritized tasks for the product roadmap.',
+    stepNotes: [
+      'Feedback is pulled in from Slack, email, Jira, Azure DevOps, Asana and Linear.',
+      'An AI model reads through it.',
+      'Similar feedback is grouped into shared themes.',
+      'The themes become prioritized tasks for the roadmap.',
+    ],
     role: 'Built and launched Saramsa.ai across integrations, LLM processing, backend services, and the frontend product experience.',
     decisions: [
       { title: 'Meet feedback where it lives', text: 'The platform pulls feedback from Slack, email, Jira, Azure DevOps, Asana, and Linear.' },
@@ -70,6 +92,13 @@ const projectDesigns: Project[] = [
     tags: ['Django', 'LangChain', 'Next.js'],
     metrics: [{ value: '2', label: 'core developers' }, { value: 'RAG', label: 'document and search workflows' }],
     steps: ['Structured data', 'Semantic index', 'RAG agents', 'Product workflows'],
+    plain: 'Nifo is an AI platform for finding solutions and providers, getting insights on enterprises, and generating documents. Each person signs in to their own secure space.',
+    stepNotes: [
+      'Information about companies and providers is collected and cleaned into datasets a model can use.',
+      'That information is indexed, so it can be searched by meaning and not only by keywords.',
+      'AI agents use the index to answer questions and draft documents.',
+      'People use all of this through the platform, with secure access for each user.',
+    ],
     role: 'Co-built Nifo end to end as one of two core developers, working directly with the founder.',
     decisions: [
       { title: 'Build across the product', text: 'A Django and PostgreSQL backend supports a Next.js/TypeScript frontend, with secure authentication and per-user access control.' },

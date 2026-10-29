@@ -1,4 +1,4 @@
-import { ArrowUpRight, ArrowRight, CalendarDays, Briefcase, MapPin } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, CalendarDays, Briefcase, MapPin, Globe } from 'lucide-react';
 import { profile, experience } from '@/lib/profile';
 import { slugOf } from '@/lib/slug';
 import { CompanyMark, isWordmark } from './company-bits';
@@ -15,7 +15,7 @@ export default function ExperiencePage({ index }: { index: number }) {
         <header className="pf-header">
           <a href="/" className="pf-wordmark" aria-label="Lathiesh home">lm<span>↗</span></a>
           <a className="pp-back" href="/#experience" style={{ marginLeft: 'auto' }}>← All experience</a>
-          <a className="pf-email" href={`mailto:${email}`}>Get in touch <ArrowUpRight size={15} /></a>
+          <a className="pf-email" href="/#contact">Get in touch <ArrowUpRight size={15} /></a>
         </header>
         <section className="pp-hero ep-hero">
           <div>
@@ -29,6 +29,7 @@ export default function ExperiencePage({ index }: { index: number }) {
               <li><CalendarDays size={15} aria-hidden="true" /><span>{role.period}</span></li>
               <li><Briefcase size={15} aria-hidden="true" /><span>{role.kind}</span></li>
               <li><MapPin size={15} aria-hidden="true" /><span>{role.location}</span></li>
+              {role.website && <li className="ep-chip-link"><a href={role.website.url} target="_blank" rel="noreferrer"><Globe size={15} aria-hidden="true" /><span className="ep-site">{role.website.label}</span><ArrowUpRight size={13} aria-hidden="true" /></a></li>}
               {role.links.map(l => (
                 <li key={l.url} className="ep-chip-link">
                   <a href={l.url} target="_blank" rel="noreferrer" aria-label={`Worked on ${l.label}`}>
@@ -66,7 +67,7 @@ export default function ExperiencePage({ index }: { index: number }) {
 
       <footer className="pf-footer">
         <span>© {new Date().getFullYear()} Lathiesh Mahendran</span>
-        <span><a href={github} target="_blank" rel="noreferrer">GitHub ↗</a> · <a href={linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a> · <a href={`mailto:${email}`}>{email}</a></span>
+        <span><a href={github} target="_blank" rel="noreferrer">GitHub ↗</a> · <a href={linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a> · <a href="/#contact">{email}</a></span>
       </footer>
     </div>
   );

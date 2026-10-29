@@ -5,6 +5,7 @@ import { profile, experience } from '@/lib/profile';
 import { projects } from '@/lib/projects';
 import { ProjectVisual } from './project-visual';
 import { CompanyMark, isWordmark } from './company-bits';
+import ContactActions from './contact-actions';
 import { brandIcon } from '@/lib/brand-icons';
 import { slugOf } from '@/lib/slug';
 import './portfolio.css';
@@ -41,7 +42,7 @@ export default function Portfolio() {
           <nav aria-label="Main navigation" className={menu ? 'open' : ''}>
             {nav.map(n => <a key={n} href={`#${n.toLowerCase()}`} onClick={() => setMenu(false)}>{n}</a>)}
           </nav>
-          <a className="pf-email" href={`mailto:${email}`}>Get in touch <ArrowUpRight size={15} /></a>
+          <a className="pf-email" href="#contact">Get in touch <ArrowUpRight size={15} /></a>
           <button className="pf-menu" aria-label="Toggle navigation" aria-expanded={menu} onClick={() => setMenu(!menu)}>{menu ? <X /> : <Menu />}</button>
         </header>
 
@@ -53,7 +54,7 @@ export default function Portfolio() {
           </h1>
           <p className="pf-sub">I build AI agents, retrieval systems, and the full-stack products around them, from the data layer to the product people use.</p>
           <div className="pf-actions">
-            <a className="pf-primary" href={`mailto:${email}`}>Email me <ArrowUpRight size={17} /></a>
+            <a className="pf-primary" href="#contact">Email me <ArrowUpRight size={17} /></a>
             <a className="pf-secondary" href="#projects">See my work <ArrowRight size={16} /></a>
             <a className="pf-secondary" href="/Lathiesh_Mahendran_Resume.pdf" target="_blank" rel="noreferrer">Résumé</a>
           </div>
@@ -91,7 +92,10 @@ export default function Portfolio() {
                   </div>
                   <p className="pf-role">{role.role} <span>· {role.kind}</span></p>
                   <p>{role.description}</p>
-                  <a className="pf-more" href={`/experience/${slugOf(role.company)}/`}>Details and tools <ArrowRight size={15} /></a>
+                  <div className="pf-exp-actions">
+                    <a className="pf-more" href={`/experience/${slugOf(role.company)}/`}>Details and tools <ArrowRight size={15} /></a>
+                    {role.website && <a className="pf-site" href={role.website.url} target="_blank" rel="noreferrer">Visit {role.website.label} <ArrowUpRight size={14} /></a>}
+                  </div>
                 </div>
                 <span className="pf-exp-loc">{role.location}</span>
               </article>
@@ -138,7 +142,7 @@ export default function Portfolio() {
 
         <section className="pf-contact" id="contact">
           <h2>Have something <em>in mind?</em></h2>
-          <a className="pf-primary" href={`mailto:${email}`}>{email} <ArrowUpRight size={17} /></a>
+          <ContactActions email={email} />
           <div className="pf-links"><a href={github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="/Lathiesh_Mahendran_Resume.pdf" target="_blank" rel="noreferrer">Résumé ↗</a></div>
         </section>
       </main>

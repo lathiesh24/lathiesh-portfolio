@@ -15,6 +15,7 @@ const experience = draft.experience.map(role => ({
   stackGroups: role.stackGroups ?? [],
   toolNotes: role.toolNotes ?? {},
   links: role.links ?? [],
+  website: role.website ?? null,
   phases: (role.phases ?? []).map(phase => `${phase.period} · ${phase.employment}`),
 }));
 const caseStudyContent = Object.fromEntries(draft.projects.map((project, i) => [

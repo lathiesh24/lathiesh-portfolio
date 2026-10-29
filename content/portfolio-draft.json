@@ -88,7 +88,13 @@
         "Claude Code",
         "Codex"
       ],
-      "links": []
+      "links": [
+        {
+          "label": "Visit Corvus",
+          "url": "https://www.corvusapp.com/",
+          "kind": "Company website"
+        }
+      ]
     },
     {
       "name": "Tia",
@@ -127,9 +133,7 @@
         "AWS Lambda",
         "AWS Bedrock",
         "Pinecone",
-        "HubSpot CRM",
-        "Hybrid retrieval",
-        "Reciprocal Rank Fusion"
+        "HubSpot CRM"
       ],
       "links": [
         {
@@ -227,6 +231,7 @@
       "period": "Nov 2025 - Present",
       "employment": "Full-time",
       "location": "New York, United States - Remote",
+      "website": { "label": "corvusapp.com", "url": "https://www.corvusapp.com/" },
       "stackGroups": [
         {
           "label": "Agents and models",
@@ -288,10 +293,11 @@
       "period": "Aug 2023 - Nov 2025",
       "employment": "Full-time",
       "location": "Coimbatore, India",
+      "website": { "label": "theyellow.network", "url": "https://theyellow.network/" },
       "stackGroups": [
         {
           "label": "Models and retrieval",
-          "items": ["OpenAI", "LangChain", "AWS Bedrock", "Pinecone", "ThirdAI NeuralDB", "Hybrid retrieval", "Reciprocal Rank Fusion"]
+          "items": ["OpenAI", "LangChain", "AWS Bedrock", "Pinecone", "ThirdAI NeuralDB"]
         },
         {
           "label": "Product",
@@ -327,6 +333,7 @@
       "role": "Software Developer Intern",
       "period": "Jun 2023 - Aug 2023",
       "location": "Illinois, United States - Remote",
+      "website": { "label": "klisme.com", "url": "https://klisme.com/" },
       "stackGroups": [
         {
           "label": "Product",
@@ -374,6 +381,7 @@
       "period": "Feb 2023 - May 2023",
       "employment": "Part-time internship",
       "location": "United States - Remote",
+      "website": { "label": "travelfika.com", "url": "https://www.travelfika.com/" },
       "stackGroups": [
         {
           "label": "Frontend",

@@ -207,6 +207,10 @@ export const experience = [
       "Codex": "Corvus uses Codex as a second coding agent alongside Claude Code. I set it up to share the repo's instructions, skills and sub-agent definitions, and used it to run tasks in parallel and review changes."
     },
     "links": [],
+    "website": {
+      "label": "corvusapp.com",
+      "url": "https://www.corvusapp.com/"
+    },
     "phases": []
   },
   {
@@ -234,9 +238,7 @@ export const experience = [
           "LangChain",
           "AWS Bedrock",
           "Pinecone",
-          "ThirdAI NeuralDB",
-          "Hybrid retrieval",
-          "Reciprocal Rank Fusion"
+          "ThirdAI NeuralDB"
         ]
       },
       {
@@ -259,6 +261,10 @@ export const experience = [
     ],
     "toolNotes": {},
     "links": [],
+    "website": {
+      "label": "theyellow.network",
+      "url": "https://theyellow.network/"
+    },
     "phases": [
       "Apr 2024 - Nov 2025 · Full-time, on-site",
       "Aug 2023 - Mar 2024 · Part-time, hybrid"
@@ -323,6 +329,10 @@ export const experience = [
         "logo": "powerwisesaver.png"
       }
     ],
+    "website": {
+      "label": "klisme.com",
+      "url": "https://klisme.com/"
+    },
     "phases": []
   },
   {
@@ -377,6 +387,10 @@ export const experience = [
     ],
     "toolNotes": {},
     "links": [],
+    "website": {
+      "label": "travelfika.com",
+      "url": "https://www.travelfika.com/"
+    },
     "phases": []
   }
 ];
@@ -419,7 +433,9 @@ export const caseStudyContent: Record<string, { description: string; problem: st
       "Slack",
       "Claude Code",
       "Codex"
-    ]
+    ],
+    "link": "https://www.corvusapp.com/",
+    "linkLabel": "Visit Corvus"
   },
   "tia": {
     "description": "Co-built a visitor-support assistant that answers questions and captures sales-qualified leads in HubSpot CRM.",
@@ -434,9 +450,7 @@ export const caseStudyContent: Record<string, { description: string; problem: st
       "AWS Lambda",
       "AWS Bedrock",
       "Pinecone",
-      "HubSpot CRM",
-      "Hybrid retrieval",
-      "Reciprocal Rank Fusion"
+      "HubSpot CRM"
     ],
     "link": "https://www.tvsscs.com",
     "linkLabel": "TVS SCS website"
