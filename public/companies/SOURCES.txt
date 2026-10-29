@@ -2,4 +2,6 @@ Company brand marks sourced from official website favicons, retrieved through Go
 Corvus: https://www.corvusapp.com/
 The Yellow Network: https://theyellow.network/
 Travelfika: https://www.travelfika.com/
-Klisme: logo pending verification; no substitute logo used.
+Klisme: https://klisme.com/wp-content/uploads/2024/01/Group-29.png (header wordmark, 142x28), downloaded Oct 2026 at the owner's request.
+Power Wise Saver: https://powerwisesaver.com/wp-content/uploads/2023/05/powerwisesaver-logo3.png (949x128), downloaded Oct 2026 at the owner's request.
+The Yellow Network (wordmark): https://theyellow.network/assets/logo.png (1920x480, full-colour logo cropped tight), downloaded Oct 2026 at the owner's request.

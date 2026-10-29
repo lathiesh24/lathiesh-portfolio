@@ -4,12 +4,13 @@ import { ArrowUpRight, ArrowRight, Menu, X } from 'lucide-react';
 import { profile, experience } from '@/lib/profile';
 import { projects } from '@/lib/projects';
 import { ProjectVisual } from './project-visual';
+import { CompanyMark, isWordmark } from './company-bits';
+import { slugOf } from '@/lib/slug';
 import './portfolio.css';
 
 const { email, github, linkedin } = profile.contact;
 const nav = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
-const companyLogos: Record<string, string> = { Corvus: 'corvus.png', 'The Yellow Network': 'yellow.png', Travelfika: 'travelfika.png' };
 const skillIcons: Record<string, string> = { Python: 'python', JavaScript: 'js', TypeScript: 'ts', React: 'react', 'Next.js': 'nextjs', 'Tailwind CSS': 'tailwind', 'Node.js': 'nodejs', Express: 'express', FastAPI: 'fastapi', Django: 'django', 'Neon (PostgreSQL)': 'postgres', MongoDB: 'mongodb', Pinecone: 'pinecone', 'OpenAI API': 'openai', 'Anthropic Claude API': 'claude', 'Google Vertex AI (Gemini)': 'gemini', LangChain: 'langchain', 'AWS Bedrock': 'aws', 'AWS Lambda': 'aws', Azure: 'azure', 'GitHub Actions': 'github', Grafana: 'grafana' };
 
 const process = [
@@ -17,22 +18,6 @@ const process = [
   { n: '02', title: 'Build and evaluate', text: 'Agents and retrieval with ground-truth evaluation, so changes are measured.' },
   { n: '03', title: 'Ship and monitor', text: 'Production product work, with monitoring and fixes once people use it.' },
 ];
-
-function ToolDeck({ groups, company }: { groups: { label: string; items: string[] }[]; company: string }) {
-  return (
-    <div className="pf-tools" role="group" aria-label={`Tools used at ${company}`}>
-      <span className="pf-tools-title">Tools</span>
-      <div className="pf-tools-deck">
-        {groups.map((g, i) => (
-          <div className="pf-tool-card" key={g.label} style={{ '--i': i } as React.CSSProperties}>
-            <h4>{g.label}</h4>
-            <ul>{g.items.map(t => <li key={t}>{t}</li>)}</ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 const kinds: Record<string, string> = {
   corvus: 'Agentic research platform',
@@ -78,7 +63,7 @@ export default function Portfolio() {
       <main>
         <section className="pf-logos" aria-label="Where I have worked">
           <span>Where I’ve built</span>
-          <ul>{Object.entries(companyLogos).map(([name, file]) => <li key={name}><img src={`/companies/${file}`} alt="" width="28" height="28" /> {name}</li>)}</ul>
+          <ul>{experience.map(r => <li key={r.company} aria-label={r.company}><CompanyMark name={r.company} size={28} />{!isWordmark(r.company) && <> {r.company}</>}</li>)}</ul>
         </section>
 
         <section className="pf-section" id="about">
@@ -100,17 +85,15 @@ export default function Portfolio() {
                 <div className="pf-exp-date"><span>0{i + 1}</span><p>{role.period}</p>{role.current && <b>NOW</b>}</div>
                 <div className="pf-exp-main">
                   <div className="pf-exp-head">
-                    {companyLogos[role.company] && <img src={`/companies/${companyLogos[role.company]}`} alt="" width="40" height="40" loading="lazy" />}
-                    <h3>{role.company}</h3>
+                    {isWordmark(role.company)
+                      ? <h3><CompanyMark name={role.company} size={64} alt={role.company} /></h3>
+                      : <><CompanyMark name={role.company} size={40} /><h3>{role.company}</h3></>}
                   </div>
                   <p className="pf-role">{role.role} <span>· {role.kind}</span></p>
                   <p>{role.description}</p>
-                  <ul className="pf-bullets">{role.contributions.map(s => <li key={s}>{s}</li>)}</ul>
+                  <a className="pf-more" href={`/experience/${slugOf(role.company)}/`}>Details and tools <ArrowRight size={15} /></a>
                 </div>
-                <div className="pf-exp-side">
-                  <span className="pf-exp-loc">{role.location}</span>
-                  <ToolDeck groups={role.stackGroups} company={role.company} />
-                </div>
+                <span className="pf-exp-loc">{role.location}</span>
               </article>
             ))}
           </div>

@@ -25,11 +25,12 @@
 .pf-secondary{display:inline-flex;align-items:center;gap:10px;padding:15px 22px;border:1px solid var(--ink);border-radius:999px;font-size:15px;text-decoration:none}
 .pf-secondary:hover{background:var(--ink);color:#fff}
 
-.pf-logos{-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);border-block:1px solid var(--line);padding:26px 5%;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.pf-logos{border-block:1px solid var(--line);padding:26px 5%;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
 .pf-logos>span{font:11px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .pf-logos ul{list-style:none;margin:0;padding:0;display:flex;gap:36px;flex-wrap:wrap;justify-content:center}
 .pf-logos li{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}
 .pf-logos img{border-radius:6px;object-fit:contain}
+.pf-mono{display:inline-grid;place-items:center;flex:none;border-radius:8px;background:#d6f7a0;color:var(--ink);font-weight:700;line-height:1}
 
 .pf-kicker{font:11px var(--font-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
 .pf-section{max-width:1180px;margin:0 auto;padding:110px 5% 0}
@@ -183,7 +184,7 @@
 .mock-tasks b{width:11px;height:11px;border:2px solid var(--accent);border-radius:3px}
 
 .pf-exp{margin-top:48px;border-top:1px solid var(--line)}
-.pf-exp-row{display:grid;grid-template-columns:170px 1fr 300px;gap:36px;padding:34px 0;border-bottom:1px solid var(--line)}
+.pf-exp-row{display:grid;grid-template-columns:170px 1fr 190px;gap:36px;padding:34px 0;border-bottom:1px solid var(--line)}
 .pf-exp-date span{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--accent);line-height:1}
 .pf-exp-date p{margin:10px 0 0;font:12px var(--font-mono);color:var(--muted)}
 .pf-exp-date b{display:inline-block;margin-top:10px;font:600 10px var(--font-mono);padding:4px 8px;border-radius:999px;background:#a3f03a;color:var(--ink)}
@@ -196,20 +197,27 @@
 .pf-bullets{list-style:none;margin:20px 0 0;padding:0;max-width:46em;display:grid;gap:14px}
 .pf-bullets li{position:relative;padding-left:24px;font-size:15px;line-height:1.8;color:#3d423b}
 .pf-bullets li:before{content:'';position:absolute;left:0;top:.95em;width:12px;height:2px;background:var(--accent)}
-.pf-exp-side{display:flex;flex-direction:column;gap:26px;align-items:stretch}
-.pf-tools{position:sticky;top:96px;perspective:900px}
-.pf-tools-title{display:block;margin-bottom:14px;font:11px var(--font-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
-.pf-tools-deck{display:grid;gap:10px;transform-style:preserve-3d;transform:rotateY(-15deg) rotateX(4deg);transform-origin:0 50%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.pf-tool-card{padding:14px 16px 13px;border-radius:16px;background:linear-gradient(145deg,#f3fbd9,#e1f6b0);border:1px solid #d3ecaa;box-shadow:0 14px 30px #16191816;transform:translate3d(calc(var(--i) * 9px),0,calc(var(--i) * 14px));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.pf-tool-card:nth-child(2){background:linear-gradient(145deg,#eaf8e6,#cfeecb);border-color:#c3e6bd}
-.pf-tool-card:nth-child(3){background:linear-gradient(145deg,#f6fbdc,#e8f4bd)}
-.pf-tool-card:nth-child(4){background:linear-gradient(145deg,#eef7e9,#d8ecd2);border-color:#cfe5c8}
-.pf-tool-card h4{margin:0 0 7px;font-family:var(--serif);font-style:italic;font-weight:400;font-size:19px;line-height:1.1;color:var(--ink)}
-.pf-tool-card ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:3px 12px}
-.pf-tool-card li{font-size:12.5px;line-height:1.6;color:#2a2f29}
+.pf-exp-main .pf-worked{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin:0 0 14px;font:11px var(--font-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.pf-worked a:has(img){padding:8px 14px;border-radius:12px;background:#fff;text-decoration:none}
+.pf-worked img{height:22px;width:auto;max-width:none;display:block}
+.pp-hero .pf-worked img{height:28px}
+.pf-worked a{display:inline-flex;align-items:center;gap:5px;font:600 14px 'Manrope Variable',sans-serif;letter-spacing:0;text-transform:none;color:var(--ink);text-decoration:underline;text-decoration-color:#a3f03a;text-decoration-thickness:3px;text-underline-offset:3px}
+.pf-more{display:inline-flex;align-items:center;gap:10px;margin-top:6px;padding:11px 18px;border:1px solid var(--ink);border-radius:999px;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s,color .2s}
+.pf-more:hover{background:var(--ink);color:#fff}
+.ep-company{display:flex!important;align-items:center;gap:16px}
+.ep-company img,.ep-company .pf-mono{border-radius:12px}
+.pp-hero .pf-tools{margin:0;max-width:none}
+.pf-tools{margin-top:26px;max-width:440px;perspective:1000px;padding:22px 18px 26px 24px;border-radius:26px;background:linear-gradient(150deg,#e4f8bd,#b9f45a)}
+.pf-code{background:#fff;border-radius:14px;box-shadow:0 18px 40px #16191830;overflow:hidden;transform:rotateY(-14deg) rotateX(3deg);transform-origin:0 50%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.pf-code-bar{display:flex;align-items:center;gap:5px;padding:10px 12px;border-bottom:1px solid #eeebe1;background:#faf9f4}
+.pf-code-bar i{width:8px;height:8px;border-radius:50%;background:#ddd9cc}
+.pf-code-bar span{margin-left:8px;font:11px var(--font-mono);color:#8a8f84}
+.pf-code dl{margin:0;padding:12px 14px 14px;display:grid;gap:12px;font-family:var(--font-mono)}
+.pf-code dt{font-size:11.5px;line-height:1.5;font-weight:500;color:var(--accent)}
+.pf-code dt:after{content:':';color:#9aa095}
+.pf-code dd{margin:2px 0 0;padding-left:12px;font-size:11.5px;line-height:1.7;color:#2a2f29;border-left:2px solid #e4f0c8}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
-  .pf-exp-row:hover .pf-tools-deck{transform:rotateY(-5deg) rotateX(0)}
-  .pf-exp-row:hover .pf-tool-card{transform:translate3d(calc(var(--i) * 16px),0,calc(var(--i) * 30px))}
+  .pf-exp-row:hover .pf-code{transform:rotateY(-4deg) rotateX(0)}
 }
 .pf-exp-loc{font-size:13px;color:var(--muted);text-align:right;display:block}
 
@@ -256,8 +264,7 @@
   .pp-next a{padding:32px}
   .pf-exp-row{grid-template-columns:1fr;gap:14px}
   .pf-exp-loc{text-align:left}
-  .pf-tools{position:static}
-  .pf-tools-deck,.pf-tool-card{transform:none}
+  .pf-code{transform:none}
   .pf-exp-date{display:flex;align-items:center;gap:14px}
   .pf-exp-date p,.pf-exp-date b{margin:0}
 }

@@ -180,6 +180,7 @@ export const experience = [
         ]
       }
     ],
+    "links": [],
     "phases": []
   },
   {
@@ -230,6 +231,7 @@ export const experience = [
         ]
       }
     ],
+    "links": [],
     "phases": [
       "Apr 2024 - Nov 2025 · Full-time, on-site",
       "Aug 2023 - Mar 2024 · Part-time, hybrid"
@@ -285,6 +287,14 @@ export const experience = [
         ]
       }
     ],
+    "links": [
+      {
+        "label": "Power Wise Saver",
+        "url": "https://powerwisesaver.com/",
+        "note": "Solar energy website",
+        "logo": "powerwisesaver.png"
+      }
+    ],
     "phases": []
   },
   {
@@ -337,6 +347,7 @@ export const experience = [
         ]
       }
     ],
+    "links": [],
     "phases": []
   }
 ];

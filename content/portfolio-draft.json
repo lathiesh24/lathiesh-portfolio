@@ -328,6 +328,14 @@
       ],
       "summary": "Sole developer building the company's web experiences with Next.js, integrating CRM and conversion tracking, and automating contact-data validation workflows.",
       "employment": "Part-time internship",
+      "links": [
+        {
+          "label": "Power Wise Saver",
+          "url": "https://powerwisesaver.com/",
+          "note": "Solar energy website",
+          "logo": "powerwisesaver.png"
+        }
+      ],
       "contributions": [
         "Sole developer: built and shipped the company's web experiences with Next.js, Tailwind CSS, and the JAMstack, including a frontend landing page.",
         "Built landing-page functionality in GoHighLevel and integrated the Facebook Conversions API.",
