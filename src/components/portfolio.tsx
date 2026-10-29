@@ -14,9 +14,9 @@ const nav = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
 
 const process = [
-  { n: '01', title: 'Understand the data', text: 'Start from the real data and the real question, before choosing a model.' },
-  { n: '02', title: 'Build and evaluate', text: 'Agents and retrieval with ground-truth evaluation, so changes are measured.' },
-  { n: '03', title: 'Ship and monitor', text: 'Production product work, with monitoring and fixes once people use it.' },
+  { n: '01', title: 'Understand the problem', text: 'Start from the real need and the real data, before choosing an approach.' },
+  { n: '02', title: 'Build and measure', text: 'Build it, then test it against real examples, so every change is measured.' },
+  { n: '03', title: 'Ship and improve', text: 'Release it, watch how it behaves in use, and keep improving it.' },
 ];
 
 const kinds: Record<string, string> = {

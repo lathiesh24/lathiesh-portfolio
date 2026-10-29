@@ -14,8 +14,8 @@ export const profile = {
     ]
   },
   "about": [
-    "I'm Lathiesh, an AI and full-stack engineer based in Coimbatore. I've worked closely with founders and small engineering teams, taking products from initial requirements through architecture, implementation, and production support.",
-    "At Corvus, I build research agents, company enrichment pipelines, evaluation tooling, and product features for sales intelligence. Previously, at The Yellow Network, I co-built Tia, a RAG assistant for TVS Supply Chain Solutions, and Nifo, an AI co-innovation platform.",
+    "I'm Lathiesh, an AI and full-stack engineer based in Coimbatore. I work with founders and small teams to take products from a first idea to something people use: the data, the AI, the backend and the interface.",
+    "I build AI agents, retrieval systems, and the data pipelines and product features around them, and I care about measuring whether they actually work.",
     "I enjoy owning a problem end to end: understanding the data, choosing the right approach, building the experience, and improving it once it's in use."
   ],
   "skills": [

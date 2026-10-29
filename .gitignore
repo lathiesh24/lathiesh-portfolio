@@ -5,3 +5,5 @@ out/
 *.tsbuildinfo
 .env*
 next-env.d.ts
+
+.vercel
